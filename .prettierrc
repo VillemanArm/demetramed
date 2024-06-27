@@ -2,9 +2,9 @@
     "singleQuote": true,
     "semi": false,
     "tabWidth": 4,
-    "bracketSpacing": true,
+    "bracketSpacing": false,
     "bracketSameLine": false,
-    "vueIndentScriptAndStyle": true,
     "singleAttributePerLine": true,
-    "htmlWhitespaceSensitivity": "strict"
+    "endOfLine": "auto",
+    "jsxBracketSameLine": false
 }
