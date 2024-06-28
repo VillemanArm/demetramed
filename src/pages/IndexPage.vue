@@ -1,6 +1,6 @@
 <template>
     <q-page class="row items-center justify-evenly">
-        <example-component
+        <!-- <example-component
             title="Example component"
             active
             :todos="todos"
@@ -13,7 +13,7 @@
             flat
         >
             Click me
-        </q-btn>
+        </q-btn> -->
         <ImageViewer />
     </q-page>
 </template>

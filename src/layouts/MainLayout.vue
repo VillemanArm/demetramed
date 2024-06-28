@@ -1,19 +1,6 @@
 <template>
     <q-layout view="lHh Lpr lFf">
-        <q-header class="header bg-white text-dark">
-            <div class="header-logo">
-                <img
-                    src="/img/logo.svg"
-                    alt=""
-                />
-            </div>
-
-            <q-toolbar>
-                <q-toolbar-title> Quasar App </q-toolbar-title>
-
-                <div>Quasar v{{ $q.version }}</div>
-            </q-toolbar>
-        </q-header>
+        <HeaderModule />
 
         <q-page-container>
             <router-view />
@@ -23,6 +10,7 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
+import HeaderModule from 'src/modules/HeaderModule.vue'
 
 defineOptions({
     name: 'MainLayout',
@@ -37,5 +25,3 @@ defineOptions({
     width: 252px
     height: 44px
 </style>
-
-<style></style>

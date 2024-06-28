@@ -71,7 +71,7 @@ module.exports = {
         'space-before-function-paren': 'off',
         'prefer-promise-reject-errors': 'off',
 
-        quotes: ['warn', 'single', { avoidEscape: true }],
+        quotes: ['warn', 'single', {avoidEscape: true}],
 
         // this rule, if on, would require explicit return type on the `render` function
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -87,5 +87,6 @@ module.exports = {
         // allow debugger during development only
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         '@import': 'off',
+        'vue/no-parsing-error': 'off',
     },
 }
