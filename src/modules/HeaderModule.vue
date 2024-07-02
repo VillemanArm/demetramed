@@ -1,5 +1,5 @@
 <template>
-    <q-header class="header bg-white text-dark">
+    <header class="header">
         <div class="header__logo">
             <img
                 src="/img/logo.svg"
@@ -22,7 +22,7 @@
                 />
             </div>
         </div>
-    </q-header>
+    </header>
 </template>
 
 <script setup lang="ts">
@@ -37,7 +37,7 @@ defineOptions({
 
 <style lang="sass">
 .header
-    padding: 32rem 64rem
+    // padding: 32rem 64rem
     display: flex
     justify-content: space-between
     align-items: center
