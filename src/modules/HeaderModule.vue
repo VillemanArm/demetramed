@@ -37,7 +37,7 @@ defineOptions({
 
 <style lang="sass">
 .header
-    // padding: 32rem 64rem
+    padding: 32rem 64rem
     display: flex
     justify-content: space-between
     align-items: center

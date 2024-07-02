@@ -1,18 +1,24 @@
 <template>
-    <div class="item">
-        <span>25/08/2023</span>
-        <span>Исследование №0015400</span>
-        <span>Иванова О.С.</span>
-        <span>Атипичных объектов: 0000</span>
-    </div>
+    <RouterLink
+        :to="`/research/:${researchItem.id}`"
+        class="item"
+    >
+        <span>{{ researchItem.researchDate }}</span>
+        <span>Исследование №{{ researchItem.researchNumber }}</span>
+        <span>{{ researchItem.patientName }}</span>
+        <span
+            >Атипичных объектов: {{ researchItem.atypicalObjectsNumber }}</span
+        >
+    </RouterLink>
 </template>
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
+import {ResearchItem} from 'stores/ResearchStore'
 
-//defineProps<{
-//	msg: string;
-//}>();
+defineProps<{
+    researchItem: ResearchItem
+}>()
 </script>
 
 <style scoped lang="sass">
@@ -29,6 +35,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
   border-radius: 4rem
   border: 1px solid $non-active-color
   cursor: pointer
+  text-decoration: none
 
   transition: all 0.3s ease-in-out
 

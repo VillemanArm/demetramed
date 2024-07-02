@@ -1,7 +1,7 @@
 import {ref, computed, watch} from 'vue'
 import {defineStore} from 'pinia'
 
-interface ResearchItem {
+export interface ResearchItem {
     id: number
     researchNumber: number
     researchDate: string
@@ -9,6 +9,7 @@ interface ResearchItem {
     patientAge: number
     institutionByReferral: string
     doctorsName: string
+    atypicalObjectsNumber: number
     diagnosis: string
     comment: string
     file: string
@@ -24,6 +25,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 29,
             institutionByReferral: 'Онкодиспансер №2 Приокского района',
             doctorsName: 'Смирнов А.Б.',
+            atypicalObjectsNumber: 2,
             diagnosis: '-',
             comment: 'подозрение на аденокарциному',
             file: '',
@@ -36,6 +38,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 35,
             institutionByReferral: 'Онкологический центр г. Москва',
             doctorsName: 'Иванов К.В.',
+            atypicalObjectsNumber: 0,
             diagnosis: '-',
             comment: 'наблюдение за динамикой опухоли',
             file: '',
@@ -48,6 +51,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 42,
             institutionByReferral: 'Региональный онкологический центр',
             doctorsName: 'Петров М.Н.',
+            atypicalObjectsNumber: 20,
             diagnosis: '-',
             comment: 'проведение биопсии',
             file: '',
@@ -60,6 +64,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 50,
             institutionByReferral: 'Онкологическая клиника "Здоровье"',
             doctorsName: 'Соколова Е.И.',
+            atypicalObjectsNumber: 12,
             diagnosis: '-',
             comment: 'подготовка к химиотерапии',
             file: '',
@@ -72,6 +77,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 60,
             institutionByReferral: 'Онкодиспансер №5 Советского района',
             doctorsName: 'Алексеев Г.П.',
+            atypicalObjectsNumber: 5,
             diagnosis: '-',
             comment: 'проведение ультразвукового исследования',
             file: '',
@@ -84,6 +90,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 45,
             institutionByReferral: 'Городская больница №3',
             doctorsName: 'Кузнецова Л.С.',
+            atypicalObjectsNumber: 55,
             diagnosis: '-',
             comment: 'консультация онколога',
             file: '',
@@ -96,6 +103,7 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 55,
             institutionByReferral: 'Онкологический центр г. Санкт-Петербург',
             doctorsName: 'Козлова А.С.',
+            atypicalObjectsNumber: 2,
             diagnosis: '-',
             comment: 'проведение компьютерной томографии',
             file: '',

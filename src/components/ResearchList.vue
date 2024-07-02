@@ -28,7 +28,7 @@
                     displayedItemsFrom,
                     displayedItemsTo
                 )"
-                :research-item="researchItem"
+                :researchItem="researchItem"
                 :key="researchItem.id"
             />
         </div>
@@ -36,8 +36,8 @@
         <BasePagination
             :maxPages="maxPages"
             :currentPage="currentPage"
-            class="float-right"
             @changePage="(value) => setCurrentPage(value)"
+            class="float-right"
         />
     </div>
 </template>
@@ -91,10 +91,13 @@ const setCurrentPage = (newValue: number) => {
     display: flex
 
     &-button
+      padding: 18rem 38rem
+
       background-color: transparent
       color: $non-active-color
       border-color: $non-active-color
       border-radius: 0
+
 
       &:first-child
         border-top-left-radius: 8rem
