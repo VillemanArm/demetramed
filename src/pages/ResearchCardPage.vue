@@ -1,7 +1,7 @@
 <template>
-    <q-page class="row">
+    <div>
         <ResearchCardModule />
-    </q-page>
+    </div>
 </template>
 
 <script setup lang="ts">
