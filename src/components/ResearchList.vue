@@ -11,20 +11,24 @@
                 <BaseButton
                     label="По дате"
                     class="list__filter-button list__filter-button--left"
+                    @click="researchStore.sortOption = 'researchDate'"
                 />
                 <BaseButton
                     label="По пациенту"
                     class="list__filter-button list__filter-button--center"
+                    @click="researchStore.sortOption = 'patientName'"
                 />
                 <BaseButton
                     label="По номеру исследования"
                     class="list__filter-button list__filter-button--right"
+                    @click="researchStore.sortOption = 'researchNumber'"
                 />
             </div>
         </div>
+
         <div class="list__items">
             <ResearchListItem
-                v-for="researchItem in researchStore.researchItems.slice(
+                v-for="researchItem in researchStore.searchedAndSortedResearchItems.slice(
                     displayedItemsFrom,
                     displayedItemsTo
                 )"

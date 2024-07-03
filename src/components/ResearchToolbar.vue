@@ -1,7 +1,7 @@
 <template>
     <div class="toolbar">
         <q-input
-            v-model="searchQuery"
+            v-model="researchStore.searchQuery"
             outlined
             placeholder="Поиск"
             clear-icon="close"
@@ -14,9 +14,9 @@
             </template>
             <template v-slot:append>
                 <q-icon
-                    v-if="searchQuery !== ''"
+                    v-if="researchStore.searchQuery"
                     name="close"
-                    @click="searchQuery = ''"
+                    @click="researchStore.searchQuery = ''"
                     class="cursor-pointer"
                     size="20rem"
                 />
@@ -56,7 +56,7 @@ import {useResearchStore} from 'stores/ResearchStore'
 
 const researchStore = useResearchStore()
 
-const searchQuery = ref<string>()
+// const searchQuery = ref<string>()
 </script>
 
 <style scoped lang="sass">
