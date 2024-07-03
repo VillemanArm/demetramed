@@ -15,6 +15,11 @@ export interface ResearchItem {
     file: string
 }
 
+export interface ModulesInViewer {
+    ResearchList: boolean
+    ReportsList: boolean
+}
+
 export const useResearchStore = defineStore('counter', () => {
     const researchItems = ref<ResearchItem[]>([
         {
@@ -110,5 +115,25 @@ export const useResearchStore = defineStore('counter', () => {
         },
     ])
 
-    return {researchItems}
+    const modulesInViewer = ref<ModulesInViewer>({
+        ResearchList: true,
+        ReportsList: false,
+    })
+
+    const setModuleInViewer = (ModuleName: string) => {
+        if (
+            ModuleName in modulesInViewer.value &&
+            modulesInViewer.value[ModuleName as keyof ModulesInViewer] === false
+        ) {
+            Object.keys(modulesInViewer.value).forEach((key) => {
+                if (key !== ModuleName) {
+                    modulesInViewer.value[key as keyof ModulesInViewer] = false
+                } else {
+                    modulesInViewer.value[key as keyof ModulesInViewer] = true
+                }
+            })
+        }
+    }
+
+    return {researchItems, modulesInViewer, setModuleInViewer}
 })

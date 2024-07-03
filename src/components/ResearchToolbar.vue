@@ -23,10 +23,24 @@
             </template>
         </q-input>
         <div class="toolbar__nav">
-            <span class="toolbar__option toolbar__option--active"
+            <span
+                :class="{
+                    toolbar__option: true,
+                    'toolbar__option--active':
+                        researchStore.modulesInViewer['ResearchList'],
+                }"
+                @click="researchStore.setModuleInViewer('ResearchList')"
                 >Исследования</span
             >
-            <span class="toolbar__option">Отчеты</span>
+            <span
+                :class="{
+                    toolbar__option: true,
+                    'toolbar__option--active':
+                        researchStore.modulesInViewer['ReportsList'],
+                }"
+                @click="researchStore.setModuleInViewer('ReportsList')"
+                >Отчеты</span
+            >
         </div>
     </div>
 </template>
@@ -34,10 +48,13 @@
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import SearchIcon from 'assets/icons/search-icon.vue'
+import {useResearchStore} from 'stores/ResearchStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
+
+const researchStore = useResearchStore()
 
 const searchQuery = ref<string>()
 </script>
@@ -59,10 +76,17 @@ const searchQuery = ref<string>()
 
     color: $non-active-color
 
-  &__option:hover
-    color: $accent
-    text-decoration: underline
+  &__option
     cursor: pointer
+
+    &:hover
+      color: $accent
+      text-decoration: underline
+
+    &--active
+      color: $accent
+      text-decoration: underline
+      cursor: default
 
 
 :deep(.q-field__control)

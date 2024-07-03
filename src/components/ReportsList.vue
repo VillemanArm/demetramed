@@ -1,6 +1,7 @@
 <template>
     <div class="list">
-        <div class="list__toolbar">
+        Component Reports List in development
+        <!-- <div class="list__toolbar">
             <BaseButton
                 label="Добавить исследование"
                 class="list__research-add"
@@ -31,15 +32,15 @@
                 :researchItem="researchItem"
                 :key="researchItem.id"
             />
-        </div>
+        </div> -->
 
-        <BasePagination
+        <!-- <BasePagination
             v-if="maxPages > 1"
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
             class="float-right"
-        />
+        /> -->
     </div>
 </template>
 
@@ -72,51 +73,55 @@ const setCurrentPage = (newValue: number) => {
 
 <style scoped lang="sass">
 .list
+  width: 1209rem
   padding: 54rem 45rem 0 45rem
 
-  &__toolbar
-    display: flex
-    margin-bottom: 44rem
 
-  &__research-add
-    margin-right: 23rem
+  text-align: center
 
-    & svg
-      transition: all 0.3s ease-in-out
+  // &__toolbar
+  //   display: flex
+  //   margin-bottom: 44rem
 
-    &:hover svg
-      fill: $active-color
-      stroke: $active-color
+  // &__research-add
+  //   margin-right: 23rem
 
-  &__filter
-    display: flex
+  //   & svg
+  //     transition: all 0.3s ease-in-out
 
-    &-button
-      padding: 18rem 38rem
+  //   &:hover svg
+  //     fill: $active-color
+  //     stroke: $active-color
 
-      background-color: transparent
-      color: $non-active-color
-      border-color: $non-active-color
-      border-radius: 0
+  // &__filter
+  //   display: flex
+
+  //   &-button
+  //     padding: 18rem 38rem
+
+  //     background-color: transparent
+  //     color: $non-active-color
+  //     border-color: $non-active-color
+  //     border-radius: 0
 
 
-      &:first-child
-        border-top-left-radius: 8rem
-        border-bottom-left-radius: 8rem
+  //     &:first-child
+  //       border-top-left-radius: 8rem
+  //       border-bottom-left-radius: 8rem
 
-      &:last-child
-        border-top-right-radius: 8rem
-        border-bottom-right-radius: 8rem
+  //     &:last-child
+  //       border-top-right-radius: 8rem
+  //       border-bottom-right-radius: 8rem
 
-      &:hover
-        background-color: $active-color
-        border-color: $active-color
-        color: $white
+  //     &:hover
+  //       background-color: $active-color
+  //       border-color: $active-color
+  //       color: $white
 
-  &__items
-    height: 658rem
-    margin-bottom: 32rem
-    display: grid
-    gap: 24rem
-    align-content: start
+  // &__items
+  //   height: 658rem
+  //   margin-bottom: 32rem
+  //   display: grid
+  //   gap: 24rem
+  //   align-content: start
 </style>
