@@ -137,7 +137,7 @@ export const useResearchStore = defineStore('counter', () => {
 
     const sortOption = ref<keyof ResearchItem | ''>('')
 
-    const sortedResearchItems = computed(() => {
+    const sortedResearchItems = computed<ResearchItem[]>(() => {
         return [...researchItems.value].sort((research1, research2) =>
             (
                 research1[sortOption.value as keyof ResearchItem] as string
@@ -149,7 +149,7 @@ export const useResearchStore = defineStore('counter', () => {
 
     const searchQuery = ref<string>('')
 
-    const searchedAndSortedResearchItems = computed(() => {
+    const searchedAndSortedResearchItems = computed<ResearchItem[]>(() => {
         return sortedResearchItems.value.filter(
             (research) =>
                 research.patientName

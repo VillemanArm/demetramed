@@ -10,17 +10,29 @@
             <div class="list__filter">
                 <BaseButton
                     label="По дате"
-                    class="list__filter-button"
+                    :class="{
+                        'list__filter-button': true,
+                        'list__filter-button--active':
+                            researchStore.sortOption === 'researchDate',
+                    }"
                     @click="researchStore.sortOption = 'researchDate'"
                 />
                 <BaseButton
                     label="По пациенту"
-                    class="list__filter-button"
+                    :class="{
+                        'list__filter-button': true,
+                        'list__filter-button--active':
+                            researchStore.sortOption === 'patientName',
+                    }"
                     @click="researchStore.sortOption = 'patientName'"
                 />
                 <BaseButton
                     label="По номеру исследования"
-                    class="list__filter-button"
+                    :class="{
+                        'list__filter-button': true,
+                        'list__filter-button--active':
+                            researchStore.sortOption === 'researchNumber',
+                    }"
                     @click="researchStore.sortOption = 'researchNumber'"
                 />
             </div>
@@ -52,7 +64,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import AddBigIcon from 'assets/icons/add-big-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
-import ResearchListItem from 'components/ResearchListItem.vue'
+import ResearchListItem from 'components/researchModule/ResearchListItem.vue'
 import {useResearchStore} from 'stores/ResearchStore'
 import {log} from 'console'
 
@@ -113,9 +125,12 @@ const setCurrentPage = (newValue: number) => {
         border-bottom-right-radius: 8rem
 
       &:hover
-        background-color: $active-color
         border-color: $active-color
-        color: $white
+        color: $active-color
+
+      &--active
+        border-color: $active-color
+        color: $active-color
 
   &__items
     height: 658rem

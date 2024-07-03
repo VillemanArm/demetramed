@@ -1,11 +1,13 @@
 <template>
     <header class="header">
-        <div class="header__logo">
-            <img
-                src="/img/logo.svg"
-                alt="Demetramed"
-            />
-        </div>
+        <RouterLink to="/">
+            <div class="header__logo">
+                <img
+                    src="/img/logo.svg"
+                    alt="Demetramed"
+                />
+            </div>
+        </RouterLink>
         <TestComponent class="red" />
         <div class="header__toolbar">
             <router-link to="/">

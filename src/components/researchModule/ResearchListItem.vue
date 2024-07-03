@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import {ResearchItem} from 'stores/ResearchStore'
+import type {ResearchItem} from 'stores/ResearchStore'
 
 defineProps<{
     researchItem: ResearchItem

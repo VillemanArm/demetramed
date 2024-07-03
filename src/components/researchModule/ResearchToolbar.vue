@@ -80,11 +80,11 @@ const researchStore = useResearchStore()
     cursor: pointer
 
     &:hover
-      color: $accent
+      color: $active-color
       text-decoration: underline
 
     &--active
-      color: $accent
+      color: $active-color
       text-decoration: underline
       cursor: default
 
