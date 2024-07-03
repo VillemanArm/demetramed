@@ -10,17 +10,17 @@
             <div class="list__filter">
                 <BaseButton
                     label="По дате"
-                    class="list__filter-button list__filter-button--left"
+                    class="list__filter-button"
                     @click="researchStore.sortOption = 'researchDate'"
                 />
                 <BaseButton
                     label="По пациенту"
-                    class="list__filter-button list__filter-button--center"
+                    class="list__filter-button"
                     @click="researchStore.sortOption = 'patientName'"
                 />
                 <BaseButton
                     label="По номеру исследования"
-                    class="list__filter-button list__filter-button--right"
+                    class="list__filter-button"
                     @click="researchStore.sortOption = 'researchNumber'"
                 />
             </div>
@@ -76,7 +76,7 @@ const setCurrentPage = (newValue: number) => {
 
 <style scoped lang="sass">
 .list
-  padding: 54rem 45rem 0 45rem
+  padding: 39rem 45rem 0 45rem
 
   &__toolbar
     display: flex
@@ -96,7 +96,7 @@ const setCurrentPage = (newValue: number) => {
     display: flex
 
     &-button
-      padding: 18rem 38rem
+      padding: 18rem 36rem
 
       background-color: transparent
       color: $non-active-color

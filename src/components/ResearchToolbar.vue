@@ -61,7 +61,7 @@ const researchStore = useResearchStore()
 
 <style scoped lang="sass">
 .toolbar
-  padding: 54rem 64rem 0 64rem
+  padding: 39rem 64rem 0 64rem
 
   &__search
     width: 472rem
@@ -87,7 +87,6 @@ const researchStore = useResearchStore()
       color: $accent
       text-decoration: underline
       cursor: default
-
 
 :deep(.q-field__control)
   height: 52rem

@@ -48,4 +48,7 @@ defineProps<{
 
     &:not(:last-child)
       padding-right: 30rem
+
+a:-webkit-any-link
+  color: $primary-font-color
 </style>
