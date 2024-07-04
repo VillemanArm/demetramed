@@ -1,3 +1,8 @@
+<!--
+  Кнопка принимает следующие параметры:
+  label?: string
+  иконку в слот
+ -->
 <template>
     <button class="base-button">
         <slot></slot>
@@ -9,7 +14,7 @@
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 
 defineProps<{
-    label: string
+    label?: string
 }>()
 </script>
 
@@ -37,4 +42,9 @@ defineProps<{
   &>svg
     width: 20rem
     height: 20rem
+
+    transition: all 0.3s ease-in-out
+
+  &>span
+    display: inline-block
 </style>

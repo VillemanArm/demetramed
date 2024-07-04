@@ -8,7 +8,6 @@
                 />
             </div>
         </RouterLink>
-        <TestComponent class="red" />
         <div class="header__toolbar">
             <router-link to="/">
                 <FaqIcon class="header__icon" />

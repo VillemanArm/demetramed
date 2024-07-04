@@ -22,8 +22,12 @@ onMounted(() => {
 <template>
     <div
         id="openseadragon1"
-        style="width: 800px; height: 600px"
+        class="viewer"
     ></div>
 </template>
 
-<style scoped lang="sass"></style>
+<style scoped lang="sass">
+.viewer
+  width: 880rem
+  height: 876rem
+</style>
