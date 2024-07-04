@@ -2,7 +2,7 @@ import {ref, computed, watch} from 'vue'
 import {defineStore} from 'pinia'
 
 export interface ResearchItem {
-    id: number
+    id: string
     researchNumber: string
     researchDate: string
     patientName: string
@@ -23,7 +23,7 @@ export interface ModulesInViewer {
 export const useResearchStore = defineStore('counter', () => {
     const researchItems = ref<ResearchItem[]>([
         {
-            id: 1,
+            id: '1',
             researchNumber: '20201',
             researchDate: '14/09/2023',
             patientName: 'Иванов Г. В.',
@@ -36,7 +36,7 @@ export const useResearchStore = defineStore('counter', () => {
             file: '',
         },
         {
-            id: 2,
+            id: '2',
             researchNumber: '20202',
             researchDate: '15/10/2023',
             patientName: 'Петров А. И.',
@@ -49,7 +49,7 @@ export const useResearchStore = defineStore('counter', () => {
             file: '',
         },
         {
-            id: 3,
+            id: '3',
             researchNumber: '20203',
             researchDate: '26/09/2023',
             patientName: 'Сидоров Н. П.',
@@ -62,7 +62,7 @@ export const useResearchStore = defineStore('counter', () => {
             file: '',
         },
         {
-            id: 4,
+            id: '4',
             researchNumber: '20204',
             researchDate: '01/09/2023',
             patientName: 'Козлова О. С.',
@@ -75,7 +75,7 @@ export const useResearchStore = defineStore('counter', () => {
             file: '',
         },
         {
-            id: 5,
+            id: '5',
             researchNumber: '20205',
             researchDate: '12/09/2023',
             patientName: 'Михайлов Д. В.',
@@ -88,7 +88,7 @@ export const useResearchStore = defineStore('counter', () => {
             file: '',
         },
         {
-            id: 6,
+            id: '6',
             researchNumber: '20206',
             researchDate: '19/12/2023',
             patientName: 'Новикова Е. А.',
@@ -101,7 +101,7 @@ export const useResearchStore = defineStore('counter', () => {
             file: '',
         },
         {
-            id: 7,
+            id: '7',
             researchNumber: '20207',
             researchDate: '26/09/2023',
             patientName: 'Соколов И.П.',

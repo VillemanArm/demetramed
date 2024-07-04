@@ -8,7 +8,7 @@
 
         <div class="card__wrap">
             <div class="card__info">
-                <ResearchInfo />
+                <ResearchInfo :research="research" />
                 <BaseButton
                     class="card__button"
                     label="Начать анализ"
@@ -28,19 +28,28 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
+import {useRoute} from 'vue-router'
+import {useResearchStore} from 'src/stores/ResearchStore'
 import ImageViewer from 'src/ui/ImageViewer.vue'
-
 import BaseButton from 'src/ui/BaseButton.vue'
 import AnalysisIcon from 'assets/icons/analysis-icon.vue'
 import ResearchInfo from 'components/researchCardModule/ResearchInfo.vue'
 import AtypicalObjectsList from 'components/researchCardModule/AtypicalObjectsList.vue'
 import AnalysisReport from 'components/researchCardModule/AnalysisReport.vue'
+import type {ResearchItem} from 'stores/ResearchStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-// $route.params.id
+const route = useRoute()
+const researchStore = useResearchStore()
+
+const research = ref<ResearchItem | undefined>(
+    researchStore.researchItems.find(
+        (item) => item.id == route.params.id.slice(1)
+    )
+)
 </script>
 
 <style scoped lang="sass">

@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
         children: [
             {path: '', component: () => import('pages/ResearchPage.vue')},
             {
-                path: '/research/:id',
+                path: 'research/:id',
                 component: () => import('pages/ResearchCardPage.vue'),
             },
         ],

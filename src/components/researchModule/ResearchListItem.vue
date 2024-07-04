@@ -1,6 +1,6 @@
 <template>
     <RouterLink
-        :to="`/research/:${researchItem.id}`"
+        :to="`research/:${researchItem.id}`"
         class="item"
     >
         <span>{{ researchItem.researchDate }}</span>
