@@ -19,6 +19,7 @@ export interface ResearchItem {
 export interface ModulesInViewer {
     ResearchList: boolean
     ReportsList: boolean
+    NewResearchForm: boolean
 }
 
 export interface AtypicalObject {
@@ -313,6 +314,7 @@ export const useResearchStore = defineStore('counter', () => {
     const modulesInViewer = ref<ModulesInViewer>({
         ResearchList: true,
         ReportsList: false,
+        NewResearchForm: false,
     })
 
     const setModuleInViewer = (ModuleName: string) => {

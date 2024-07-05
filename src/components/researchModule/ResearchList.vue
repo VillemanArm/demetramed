@@ -4,6 +4,7 @@
             <BaseButton
                 label="Добавить исследование"
                 class="list__research-add"
+                @click="researchStore.setModuleInViewer('NewResearchForm')"
             >
                 <AddBigIcon />
             </BaseButton>

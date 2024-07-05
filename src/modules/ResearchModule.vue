@@ -4,6 +4,9 @@
         <div class="research__viewer">
             <ResearchList v-if="researchStore.modulesInViewer.ResearchList" />
             <ReportsList v-if="researchStore.modulesInViewer.ReportsList" />
+            <NewResearchForm
+                v-if="researchStore.modulesInViewer.NewResearchForm"
+            />
         </div>
     </div>
 </template>
@@ -13,6 +16,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import ResearchToolbar from 'components/researchModule/ResearchToolbar.vue'
 import ResearchList from 'components/researchModule/ResearchList.vue'
 import ReportsList from 'components/researchModule/ReportsList.vue'
+import NewResearchForm from 'components/researchModule/NewResearchForm.vue'
 import {useResearchStore} from 'stores/ResearchStore'
 
 //defineProps<{

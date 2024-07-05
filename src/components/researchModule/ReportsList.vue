@@ -51,7 +51,6 @@ import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
 import ResearchListItem from 'components/ResearchListItem.vue'
 import {useResearchStore} from 'stores/ResearchStore'
-import {log} from 'console'
 
 //defineProps<{
 //	msg: string;
