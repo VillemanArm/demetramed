@@ -20,7 +20,7 @@
             </div>
             <div class="card__viewer">
                 <ImageViewer class="card__image-viewer" />
-                <AtypicalObjectsList />
+                <AtypicalObjectsList :list="research?.atypicalObjects" />
             </div>
         </div>
     </div>

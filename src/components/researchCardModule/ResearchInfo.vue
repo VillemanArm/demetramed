@@ -7,7 +7,7 @@
         <span>Пациент:</span>
         <span>{{ research?.patientName }}</span>
         <span>Возраст:</span>
-        <span>{{ research?.patientAge }} лет</span>
+        <span>{{ research?.patientAge }}</span>
         <span>Учреждение по направлению:</span>
         <span>{{ research?.institutionByReferral }}</span>
         <span>ФИО врача по направлению:</span>

@@ -2,40 +2,14 @@
     <div class="objects">
         <h3 class="objects__title">Атипичные объекты</h3>
         <div class="objects__list">
-            <div class="objects__item">
-                <h4 class="objects__item-title">Объект #AO1</h4>
+            <div
+                v-for="object in list"
+                :key="object.id"
+                class="objects__item"
+            >
+                <h4 class="objects__item-title">Объект #{{ object.number }}</h4>
                 <div class="objects__item-img">
-                    <img src="/img/snapshot-item-example.jpg" />
-                </div>
-            </div>
-            <div class="objects__item">
-                <h4 class="objects__item-title">Объект #AO1</h4>
-                <div class="objects__item-img">
-                    <img src="/img/snapshot-item-example.jpg" />
-                </div>
-            </div>
-            <div class="objects__item">
-                <h4 class="objects__item-title">Объект #AO1</h4>
-                <div class="objects__item-img">
-                    <img src="/img/snapshot-item-example.jpg" />
-                </div>
-            </div>
-            <div class="objects__item">
-                <h4 class="objects__item-title">Объект #AO1</h4>
-                <div class="objects__item-img">
-                    <img src="/img/snapshot-item-example.jpg" />
-                </div>
-            </div>
-            <div class="objects__item">
-                <h4 class="objects__item-title">Объект #AO1</h4>
-                <div class="objects__item-img">
-                    <img src="/img/snapshot-item-example.jpg" />
-                </div>
-            </div>
-            <div class="objects__item">
-                <h4 class="objects__item-title">Объект #AO1</h4>
-                <div class="objects__item-img">
-                    <img src="/img/snapshot-item-example.jpg" />
+                    <img :src="object.img" />
                 </div>
             </div>
         </div>
@@ -44,10 +18,11 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
+import type {AtypicalObject} from 'stores/ResearchStore'
 
-//defineProps<{
-//	msg: string;
-//}>();
+defineProps<{
+    list: AtypicalObject[] | undefined
+}>()
 </script>
 
 <style scoped lang="sass">

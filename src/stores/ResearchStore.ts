@@ -10,6 +10,7 @@ export interface ResearchItem {
     institutionByReferral: string
     doctorsName: string
     atypicalObjectsNumber: number
+    atypicalObjects: AtypicalObject[] | []
     diagnosis: string
     comment: string
     file: string
@@ -18,6 +19,12 @@ export interface ResearchItem {
 export interface ModulesInViewer {
     ResearchList: boolean
     ReportsList: boolean
+}
+
+export interface AtypicalObject {
+    id: string
+    number: string
+    img: string
 }
 
 export const useResearchStore = defineStore('counter', () => {
@@ -30,7 +37,49 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 29,
             institutionByReferral: 'Онкодиспансер №2 Приокского района',
             doctorsName: 'Смирнов А.Б.',
-            atypicalObjectsNumber: 2,
+            atypicalObjectsNumber: 8,
+            atypicalObjects: [
+                {
+                    id: '1',
+                    number: 'A01',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '2',
+                    number: 'A02',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '3',
+                    number: 'A03',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '4',
+                    number: 'A04',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '5',
+                    number: 'A05',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '6',
+                    number: 'A06',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '7',
+                    number: 'A07',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '8',
+                    number: 'A08',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+            ],
             diagnosis: '-',
             comment: 'подозрение на аденокарциному',
             file: '',
@@ -44,6 +93,7 @@ export const useResearchStore = defineStore('counter', () => {
             institutionByReferral: 'Онкологический центр г. Москва',
             doctorsName: 'Иванов К.В.',
             atypicalObjectsNumber: 0,
+            atypicalObjects: [],
             diagnosis: '-',
             comment: 'наблюдение за динамикой опухоли',
             file: '',
@@ -56,7 +106,29 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 42,
             institutionByReferral: 'Региональный онкологический центр',
             doctorsName: 'Петров М.Н.',
-            atypicalObjectsNumber: 20,
+            atypicalObjectsNumber: 4,
+            atypicalObjects: [
+                {
+                    id: '1',
+                    number: 'A01',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '2',
+                    number: 'A02',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '3',
+                    number: 'A03',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '4',
+                    number: 'A04',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+            ],
             diagnosis: '-',
             comment: 'проведение биопсии',
             file: '',
@@ -69,7 +141,39 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 50,
             institutionByReferral: 'Онкологическая клиника "Здоровье"',
             doctorsName: 'Соколова Е.И.',
-            atypicalObjectsNumber: 12,
+            atypicalObjectsNumber: 6,
+            atypicalObjects: [
+                {
+                    id: '1',
+                    number: 'A01',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '2',
+                    number: 'A02',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '3',
+                    number: 'A03',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '4',
+                    number: 'A04',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '5',
+                    number: 'A05',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '6',
+                    number: 'A06',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+            ],
             diagnosis: '-',
             comment: 'подготовка к химиотерапии',
             file: '',
@@ -83,6 +187,33 @@ export const useResearchStore = defineStore('counter', () => {
             institutionByReferral: 'Онкодиспансер №5 Советского района',
             doctorsName: 'Алексеев Г.П.',
             atypicalObjectsNumber: 5,
+            atypicalObjects: [
+                {
+                    id: '1',
+                    number: 'A01',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '2',
+                    number: 'A02',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '3',
+                    number: 'A03',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '4',
+                    number: 'A04',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '5',
+                    number: 'A05',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+            ],
             diagnosis: '-',
             comment: 'проведение ультразвукового исследования',
             file: '',
@@ -95,7 +226,39 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 45,
             institutionByReferral: 'Городская больница №3',
             doctorsName: 'Кузнецова Л.С.',
-            atypicalObjectsNumber: 55,
+            atypicalObjectsNumber: 6,
+            atypicalObjects: [
+                {
+                    id: '1',
+                    number: 'A01',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '2',
+                    number: 'A02',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '3',
+                    number: 'A03',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '4',
+                    number: 'A04',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '5',
+                    number: 'A05',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '6',
+                    number: 'A06',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+            ],
             diagnosis: '-',
             comment: 'консультация онколога',
             file: '',
@@ -108,7 +271,39 @@ export const useResearchStore = defineStore('counter', () => {
             patientAge: 55,
             institutionByReferral: 'Онкологический центр г. Санкт-Петербург',
             doctorsName: 'Козлова А.С.',
-            atypicalObjectsNumber: 2,
+            atypicalObjectsNumber: 6,
+            atypicalObjects: [
+                {
+                    id: '1',
+                    number: 'A01',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '2',
+                    number: 'A02',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '3',
+                    number: 'A03',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '4',
+                    number: 'A04',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '5',
+                    number: 'A05',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+                {
+                    id: '6',
+                    number: 'A06',
+                    img: '/img/snapshot-item-example.jpg',
+                },
+            ],
             diagnosis: '-',
             comment: 'проведение компьютерной томографии',
             file: '',
