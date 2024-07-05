@@ -28,7 +28,6 @@ defineProps<{
   padding: 0 32rem
   display: grid
   grid-template-columns: 145rem 310rem 290rem 1fr
-  // gap: 32rem
 
   font-size: 20rem
 

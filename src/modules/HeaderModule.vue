@@ -38,37 +38,37 @@ defineOptions({
 
 <style lang="sass">
 .header
-    padding: 32rem 64rem
+  padding: 32rem 64rem
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.header__logo
+  width: 252rem
+  height: 44rem
+
+.header__toolbar
+  display: flex
+  align-items: center
+
+  &>a
     display: flex
-    justify-content: space-between
     align-items: center
 
-    &__logo
-        width: 252rem
-        height: 44rem
+    &:not(:last-child)
+      margin-right: 24rem
 
-    &__toolbar
-        display: flex
-        align-items: center
+.header__icon
+  width: 32rem
+  height: 32rem
 
-        &>a
-            display: flex
-            align-items: center
+  &:hover
+    fill: $active-color
 
-            &:not(:last-child)
-                margin-right: 24rem
+.header__user
+  width: 60rem
+  height: 60rem
+  margin-left: 8rem
 
-    &__icon
-        width: 32rem
-        height: 32rem
-
-        &:hover
-            fill: $active-color
-
-    &__user
-      width: 60rem
-      height: 60rem
-      margin-left: 8rem
-
-      border-radius: 50%
+  border-radius: 50%
 </style>

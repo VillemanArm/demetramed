@@ -6,10 +6,10 @@ export interface ResearchItem {
     researchNumber: string
     researchDate: string
     patientName: string
-    patientAge: number
+    patientAge: number | null
     institutionByReferral: string
     doctorsName: string
-    atypicalObjectsNumber: number
+    atypicalObjectsNumber: number | null
     atypicalObjects: AtypicalObject[] | []
     diagnosis: string
     comment: string
@@ -359,6 +359,10 @@ export const useResearchStore = defineStore('counter', () => {
         )
     })
 
+    const addResearchItem = (newItem: ResearchItem) => {
+        researchItems.value.push(newItem)
+    }
+
     return {
         researchItems,
         modulesInViewer,
@@ -367,5 +371,6 @@ export const useResearchStore = defineStore('counter', () => {
         sortOption,
         searchedAndSortedResearchItems,
         searchQuery,
+        addResearchItem,
     }
 })

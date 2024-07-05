@@ -63,30 +63,30 @@ const researchStore = useResearchStore()
 .toolbar
   padding: 39rem 64rem 0 64rem
 
-  &__search
-    width: 472rem
-    margin-bottom: 32rem
+.toolbar__search
+  width: 472rem
+  margin-bottom: 32rem
 
-  &__nav
-    width: 472rem
-    display: grid
-    grid-template-columns: repeat(2, 1fr)
+.toolbar__nav
+  width: 472rem
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
 
-    font-size: 24rem
+  font-size: 24rem
 
-    color: $non-active-color
+  color: $non-active-color
 
-  &__option
-    cursor: pointer
+.toolbar__option
+  cursor: pointer
 
-    &:hover
-      color: $active-color
-      text-decoration: underline
+  &:hover
+    color: $active-color
+    text-decoration: underline
 
-    &--active
-      color: $active-color
-      text-decoration: underline
-      cursor: default
+  &--active
+    color: $active-color
+    text-decoration: underline
+    cursor: default
 
 :deep(.q-field__control)
   height: 52rem

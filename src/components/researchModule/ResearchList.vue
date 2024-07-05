@@ -91,52 +91,52 @@ const setCurrentPage = (newValue: number) => {
 .list
   padding: 39rem 45rem 0 45rem
 
-  &__toolbar
-    display: flex
-    margin-bottom: 44rem
+.list__toolbar
+  display: flex
+  margin-bottom: 44rem
 
-  &__research-add
-    margin-right: 23rem
+.list__research-add
+  margin-right: 23rem
 
-    & svg
-      transition: all 0.3s ease-in-out
+  & svg
+    transition: all 0.3s ease-in-out
 
-    &:hover svg
-      fill: $active-color
-      stroke: $active-color
+  &:hover svg
+    fill: $active-color
+    stroke: $active-color
 
-  &__filter
-    display: flex
+.list__filter
+  display: flex
 
-    &-button
-      padding: 18rem 36rem
+.list__filter-button
+  padding: 18rem 36rem
 
-      background-color: transparent
-      color: $non-active-color
-      border-color: $non-active-color
-      border-radius: 0
+  background-color: transparent
+  color: $non-active-color
+  border-color: $non-active-color
+  border-radius: 0
 
 
-      &:first-child
-        border-top-left-radius: 8rem
-        border-bottom-left-radius: 8rem
+  &:first-child
+    border-top-left-radius: 8rem
+    border-bottom-left-radius: 8rem
 
-      &:last-child
-        border-top-right-radius: 8rem
-        border-bottom-right-radius: 8rem
+  &:last-child
+    border-top-right-radius: 8rem
+    border-bottom-right-radius: 8rem
 
-      &:hover
-        border-color: $active-color
-        color: $active-color
+  &:hover
+    border-color: $active-color
+    color: $active-color
 
-      &--active
-        border-color: $active-color
-        color: $active-color
+  &--active
+    border-color: $active-color
+    color: $active-color
 
-  &__items
-    height: 658rem
-    margin-bottom: 32rem
-    display: grid
-    gap: 24rem
-    align-content: start
+.list__items
+  height: 658rem
+  margin-bottom: 32rem
+  display: grid
+  gap: 24rem
+  align-content: start
 </style>
