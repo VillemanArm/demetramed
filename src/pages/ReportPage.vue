@@ -1,12 +1,12 @@
 <template>
     <div>
-        <ResearchCardModule />
+        <ReportModule />
     </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
-import ResearchCardModule from 'src/modules/ResearchCardModule.vue'
+import ReportModule from 'src/modules/ReportModule.vue'
 </script>
 
 <style></style>

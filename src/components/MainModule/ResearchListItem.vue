@@ -48,9 +48,6 @@ defineProps<{
     align-self: center
     display: inline-block
 
-    // &:not(:last-child)
-    //   padding-right: 30rem
-
 .item__button
   min-width: 200rem
   padding: 18rem 14rem

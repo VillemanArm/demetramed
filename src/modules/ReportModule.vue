@@ -33,9 +33,9 @@ import {useResearchStore} from 'src/stores/ResearchStore'
 import ImageViewer from 'src/ui/ImageViewer.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import AnalysisIcon from 'assets/icons/analysis-icon.vue'
-import ResearchInfo from 'components/researchCardModule/ResearchInfo.vue'
-import AtypicalObjectsList from 'components/researchCardModule/AtypicalObjectsList.vue'
-import AnalysisReport from 'components/researchCardModule/AnalysisReport.vue'
+import ResearchInfo from 'components/ReportModule/ResearchInfo.vue'
+import AtypicalObjectsList from 'components/ReportModule/AtypicalObjectsList.vue'
+import AnalysisReport from 'components/ReportModule/AnalysisReport.vue'
 // import type {ResearchItem} from 'stores/ResearchStore'
 
 //defineProps<{
