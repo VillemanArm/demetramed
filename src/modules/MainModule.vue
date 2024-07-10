@@ -13,10 +13,10 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import ResearchToolbar from 'components/researchModule/ResearchToolbar.vue'
-import ResearchList from 'components/researchModule/ResearchList.vue'
-import ReportsList from 'components/researchModule/ReportsList.vue'
-import NewResearchForm from 'components/researchModule/NewResearchForm.vue'
+import ResearchToolbar from 'components/MainModule/ResearchToolbar.vue'
+import ResearchList from 'components/MainModule/ResearchList.vue'
+import ReportsList from 'components/MainModule/ReportsList.vue'
+import NewResearchForm from 'components/MainModule/NewResearchForm.vue'
 import {useResearchStore} from 'stores/ResearchStore'
 
 //defineProps<{

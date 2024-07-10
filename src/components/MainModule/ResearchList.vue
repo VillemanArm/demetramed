@@ -65,7 +65,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import AddBigIcon from 'assets/icons/add-big-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
-import ResearchListItem from 'components/researchModule/ResearchListItem.vue'
+import ResearchListItem from 'components/MainModule/ResearchListItem.vue'
 import {useResearchStore} from 'stores/ResearchStore'
 import {log} from 'console'
 

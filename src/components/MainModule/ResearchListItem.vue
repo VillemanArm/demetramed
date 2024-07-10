@@ -1,8 +1,5 @@
 <template>
-    <RouterLink
-        :to="`research/:${researchItem.id}`"
-        class="item"
-    >
+    <div class="item">
         <span>{{ researchItem.researchDate }}</span>
         <span>Исследование №{{ researchItem.researchNumber }}</span>
         <span>{{ researchItem.patientName }}</span>
@@ -12,7 +9,7 @@
         >
             <AnalysisIcon />
         </BaseButton>
-    </RouterLink>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -69,7 +66,4 @@ defineProps<{
 
   &:hover svg
     fill: $active-color
-
-a:-webkit-any-link
-  color: $primary-font-color
 </style>
