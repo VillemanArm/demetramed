@@ -1,21 +1,21 @@
 <template>
     <div class="info">
         <span>Дата:</span>
-        <span>{{ research?.researchDate }}</span>
+        <span>01/07/2023</span>
         <span>№Исследования:</span>
-        <span>{{ research?.researchNumber }}</span>
+        <span>0250330</span>
         <span>Пациент:</span>
-        <span>{{ research?.patientName }}</span>
+        <span>Панкратова Е.Н.</span>
         <span>Возраст:</span>
-        <span>{{ research?.patientAge }}</span>
+        <span>35</span>
         <span>Учреждение по направлению:</span>
-        <span>{{ research?.institutionByReferral }}</span>
+        <span>ГБУЗ НО Поликлиника №30</span>
         <span>ФИО врача по направлению:</span>
-        <span>{{ research?.doctorsName }}</span>
+        <span>Черногорцева Е.С.</span>
         <span>Клинический диагноз:</span>
-        <span>{{ research?.diagnosis }}</span>
+        <span>Патология</span>
         <span>Комментарий:</span>
-        <span>{{ research?.comment }}</span>
+        <span>-</span>
 
         <EditCircleIcon class="info__edit" />
     </div>
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import EditCircleIcon from 'assets/icons/edit-circle-icon.vue'
-import type {ResearchItem} from 'stores/ResearchStore'
+// import type {ResearchItem} from 'stores/ResearchStore'
 
 defineProps<{
     research: ResearchItem | undefined

@@ -20,7 +20,7 @@
             </div>
             <div class="card__viewer">
                 <ImageViewer class="card__image-viewer" />
-                <AtypicalObjectsList :list="research?.atypicalObjects" />
+                <!-- <AtypicalObjectsList :list="research?.atypicalObjects" /> -->
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@ import AnalysisIcon from 'assets/icons/analysis-icon.vue'
 import ResearchInfo from 'components/researchCardModule/ResearchInfo.vue'
 import AtypicalObjectsList from 'components/researchCardModule/AtypicalObjectsList.vue'
 import AnalysisReport from 'components/researchCardModule/AnalysisReport.vue'
-import type {ResearchItem} from 'stores/ResearchStore'
+// import type {ResearchItem} from 'stores/ResearchStore'
 
 //defineProps<{
 //	msg: string;

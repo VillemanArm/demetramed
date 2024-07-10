@@ -68,7 +68,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import SuccessIcon from 'assets/icons/success-icon.vue'
 import {useResearchStore} from 'stores/ResearchStore'
-import type {ResearchItem} from 'stores/ResearchStore'
+// import type {ResearchItem} from 'stores/ResearchStore'
 
 //defineProps<{
 //	msg: string;
@@ -77,7 +77,7 @@ import type {ResearchItem} from 'stores/ResearchStore'
 const researchStore = useResearchStore()
 
 const date = new Date()
-const newItem = ref<ResearchItem>({
+const newItem = ref<newResearch>({
     id: String(Date.now()),
     researchNumber: '',
     researchDate: date.toLocaleDateString().replaceAll('.', '/'),
