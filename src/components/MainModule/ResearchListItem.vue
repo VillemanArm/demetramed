@@ -29,14 +29,13 @@ defineProps<{
   height: 112rem
   padding: 8rem 32rem
   display: grid
-  grid-template-columns: 145rem 290rem 306rem 1fr
-  column-gap: 30rem
+  grid-template-columns: 130rem 270rem 356rem 1fr
+  column-gap: 26rem
 
   font-size: 20rem
 
   border-radius: 4rem
   border: 1px solid $non-active-color
-  cursor: pointer
   text-decoration: none
 
   transition: all 0.3s ease-in-out
@@ -46,14 +45,13 @@ defineProps<{
 
   & span
     align-self: center
+    justify-self: start
     display: inline-block
 
 .item__button
-  min-width: 200rem
+  width: 220rem
   padding: 18rem 14rem
   align-self: center
-  display: flex
-  align-items: center
 
   font-size: 18rem
 

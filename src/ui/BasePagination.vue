@@ -56,6 +56,7 @@ const handleChangePage = (newPageValue: number) => {
 .pagination
   display: flex
   align-items: center
+  padding: 1rem
 
   &__btn
     width: 60rem

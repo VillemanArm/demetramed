@@ -9,21 +9,6 @@ declare global {
         patientName: string
     }
 
-    interface ReportItem {
-        id: string
-        researchNumber: string
-        researchDate: string
-        patientName: string
-        patientAge: number | null
-        institutionByReferral: string
-        doctorsName: string
-        atypicalObjectsNumber: number | null //удалить
-        atypicalObjects: AtypicalObject[] | []
-        diagnosis: string
-        comment: string
-        file: string // посмотреть как отправляется файл с POST запросом
-    }
-
     interface newResearch {
         id: string
         researchNumber: string
@@ -52,7 +37,7 @@ export interface AtypicalObject {
     img: string
 }
 
-export const useResearchStore = defineStore('counter', () => {
+export const useResearchStore = defineStore('research', () => {
     const researchItems = ref<ResearchItem[]>([
         {
             id: '1',

@@ -1,67 +1,52 @@
 <template>
     <div class="list">
-        Component Reports List in development
-        <!-- <div class="list__toolbar">
+        <div class="list__toolbar">
             <BaseButton
-                label="Добавить исследование"
-                class="list__research-add"
+                label="Скачать отчеты"
+                class="list__download-reports"
             >
-                <AddBigIcon />
+                <ReportIcon />
             </BaseButton>
-            <div class="list__filter">
-                <BaseButton
-                    label="По дате"
-                    class="list__filter-button list__filter-button--left"
-                />
-                <BaseButton
-                    label="По пациенту"
-                    class="list__filter-button list__filter-button--center"
-                />
-                <BaseButton
-                    label="По номеру исследования"
-                    class="list__filter-button list__filter-button--right"
-                />
-            </div>
         </div>
         <div class="list__items">
-            <ResearchListItem
-                v-for="researchItem in researchStore.researchItems.slice(
+            <ReportsListItem
+                v-for="reportItem in reportsStore.reportItems.slice(
                     displayedItemsFrom,
                     displayedItemsTo
                 )"
-                :researchItem="researchItem"
-                :key="researchItem.id"
+                :reportItem="reportItem"
+                :key="reportItem.id"
             />
-        </div> -->
+        </div>
 
-        <!-- <BasePagination
+        <BasePagination
             v-if="maxPages > 1"
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
             class="float-right"
-        /> -->
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import AddBigIcon from 'assets/icons/add-big-icon.vue'
+import ReportIcon from 'assets/icons/report-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
-import ResearchListItem from 'components/ResearchListItem.vue'
-import {useResearchStore} from 'stores/ResearchStore'
+import ReportsListItem from 'components/MainModule/ReportsListItem.vue'
+import {useReportsStore} from 'stores/ReportsStore'
 
-//defineProps<{
-//	msg: string;
-//}>();
+// //defineProps<{
+// //	msg: string;
+// //}>();
 
-const researchStore = useResearchStore()
+const reportsStore = useReportsStore()
 
 const currentPage = ref<number>(1)
 const itemsByPage = 5
 const maxPages = computed(() =>
-    Math.ceil(researchStore.researchItems.length / itemsByPage)
+    Math.ceil(reportsStore.reportItems.length / itemsByPage)
 )
 const displayedItemsFrom = computed(() => (currentPage.value - 1) * itemsByPage)
 const displayedItemsTo = computed(() => displayedItemsFrom.value + itemsByPage)
@@ -73,24 +58,22 @@ const setCurrentPage = (newValue: number) => {
 <style scoped lang="sass">
 .list
   width: 1209rem
-  padding: 54rem 45rem 0 45rem
-
+  padding: 39rem 45rem 0 45rem
 
   text-align: center
 
-  // &__toolbar
-  //   display: flex
-  //   margin-bottom: 44rem
+.list__toolbar
+  display: flex
+  margin-bottom: 44rem
 
-  // &__research-add
-  //   margin-right: 23rem
+.list__download-reports
+  background-color: $non-active-color
+  border-color: $non-active-color
 
-  //   & svg
-  //     transition: all 0.3s ease-in-out
-
-  //   &:hover svg
-  //     fill: $active-color
-  //     stroke: $active-color
+  &:hover
+    background-color: $active-color
+    border-color: $active-color
+    color: $white
 
   // &__filter
   //   display: flex
@@ -117,10 +100,10 @@ const setCurrentPage = (newValue: number) => {
   //       border-color: $active-color
   //       color: $white
 
-  // &__items
-  //   height: 658rem
-  //   margin-bottom: 32rem
-  //   display: grid
-  //   gap: 24rem
-  //   align-content: start
+.list__items
+  height: 658rem
+  margin-bottom: 32rem
+  display: grid
+  gap: 24rem
+  align-content: start
 </style>

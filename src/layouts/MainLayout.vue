@@ -17,11 +17,4 @@ defineOptions({
 })
 </script>
 
-<style scoped lang="sass">
-.header
-  padding: 32rem 64rem
-
-.header-logo
-    width: 252px
-    height: 44px
-</style>
+<style scoped lang="sass"></style>

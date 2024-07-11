@@ -1,17 +1,12 @@
 <template>
     <RouterLink
-        :to="`research/:${reportItem.id}`"
+        :to="`report/:${reportItem.id}`"
         class="item"
     >
         <span>{{ reportItem.researchDate }}</span>
         <span>Исследование №{{ reportItem.researchNumber }}</span>
         <span>{{ reportItem.patientName }}</span>
-        <BaseButton
-            class="item__button"
-            label="Начать анализ"
-        >
-            <AnalysisIcon />
-        </BaseButton>
+        <span>Атипичных объектов: {{ reportItem.atypicalObjectsAmount }}</span>
     </RouterLink>
 </template>
 
@@ -31,8 +26,8 @@ defineProps<{
   height: 112rem
   padding: 8rem 32rem
   display: grid
-  grid-template-columns: 145rem 290rem 306rem 1fr
-  column-gap: 30rem
+  grid-template-columns: 130rem 270rem 290rem 1fr
+  column-gap: 26rem
 
   font-size: 20rem
 
@@ -47,27 +42,15 @@ defineProps<{
     border-color: $active-color
 
   & span
-    align-self: center
     display: inline-block
+    align-self: center
+    text-align: start
+
 
     // &:not(:last-child)
     //   padding-right: 30rem
 
-.item__button
-  min-width: 200rem
-  padding: 18rem 14rem
-  align-self: center
-  display: flex
-  align-items: center
 
-  font-size: 18rem
-
-  &>svg
-    width: 24rem
-    height: 24rem
-
-  &:hover svg
-    fill: $active-color
 
 a:-webkit-any-link
   color: $primary-font-color
