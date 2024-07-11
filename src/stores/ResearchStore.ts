@@ -17,24 +17,10 @@ declare global {
         patientAge: number | null
         institutionByReferral: string
         doctorsName: string
-        atypicalObjectsNumber: number | null //удалить
-        atypicalObjects: AtypicalObject[] | []
         diagnosis: string
         comment: string
         file: string // посмотреть как отправляется файл с POST запросом
     }
-}
-
-export interface ModulesInViewer {
-    ResearchList: boolean
-    ReportsList: boolean
-    NewResearchForm: boolean
-}
-
-export interface AtypicalObject {
-    id: string
-    number: string
-    img: string
 }
 
 export const useResearchStore = defineStore('research', () => {
@@ -83,27 +69,6 @@ export const useResearchStore = defineStore('research', () => {
         },
     ])
 
-    const modulesInViewer = ref<ModulesInViewer>({
-        ResearchList: true,
-        ReportsList: false,
-        NewResearchForm: false,
-    })
-
-    const setModuleInViewer = (ModuleName: string) => {
-        if (
-            ModuleName in modulesInViewer.value &&
-            modulesInViewer.value[ModuleName as keyof ModulesInViewer] === false
-        ) {
-            Object.keys(modulesInViewer.value).forEach((key) => {
-                if (key !== ModuleName) {
-                    modulesInViewer.value[key as keyof ModulesInViewer] = false
-                } else {
-                    modulesInViewer.value[key as keyof ModulesInViewer] = true
-                }
-            })
-        }
-    }
-
     const sortOption = ref<keyof ResearchItem | ''>('')
 
     const sortedResearchItems = computed<ResearchItem[]>(() => {
@@ -137,8 +102,6 @@ export const useResearchStore = defineStore('research', () => {
 
     return {
         researchItems,
-        modulesInViewer,
-        setModuleInViewer,
         sortedResearchItems,
         sortOption,
         searchedAndSortedResearchItems,

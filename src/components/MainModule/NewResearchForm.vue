@@ -85,8 +85,6 @@ const newItem = ref<newResearch>({
     patientAge: null,
     institutionByReferral: '',
     doctorsName: '',
-    atypicalObjectsNumber: null,
-    atypicalObjects: [],
     diagnosis: '',
     comment: '',
     file: '',
@@ -101,7 +99,7 @@ const handleSaveClick = () => {
 .form
     width: 1116rem
     height: 728rem
-    margin-top: 39rem
+    margin: 39rem 0 0 45rem
     padding: 16rem 0 0 117rem
 
     font-size: 18rem

@@ -1,7 +1,7 @@
 <template>
     <div class="toolbar">
         <q-input
-            v-model="researchStore.searchQuery"
+            v-model="mainStore.searchQuery"
             outlined
             placeholder="Поиск"
             clear-icon="close"
@@ -14,9 +14,9 @@
             </template>
             <template v-slot:append>
                 <q-icon
-                    v-if="researchStore.searchQuery"
+                    v-if="mainStore.searchQuery"
                     name="close"
-                    @click="researchStore.searchQuery = ''"
+                    @click="mainStore.searchQuery = ''"
                     class="cursor-pointer"
                     size="20rem"
                 />
@@ -27,18 +27,18 @@
                 :class="{
                     toolbar__option: true,
                     'toolbar__option--active':
-                        researchStore.modulesInViewer['ResearchList'],
+                        mainStore.modulesInViewer['ResearchList'],
                 }"
-                @click="researchStore.setModuleInViewer('ResearchList')"
+                @click="mainStore.setModuleInViewer('ResearchList')"
                 >Исследования</span
             >
             <span
                 :class="{
                     toolbar__option: true,
                     'toolbar__option--active':
-                        researchStore.modulesInViewer['ReportsList'],
+                        mainStore.modulesInViewer['ReportsList'],
                 }"
-                @click="researchStore.setModuleInViewer('ReportsList')"
+                @click="mainStore.setModuleInViewer('ReportsList')"
                 >Отчеты</span
             >
         </div>
@@ -48,15 +48,13 @@
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import SearchIcon from 'assets/icons/search-icon.vue'
-import {useResearchStore} from 'stores/ResearchStore'
+import {useMainStore} from 'stores/MainStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-const researchStore = useResearchStore()
-
-// const searchQuery = ref<string>()
+const mainStore = useMainStore()
 </script>
 
 <style scoped lang="sass">

@@ -1,29 +1,27 @@
 <template>
     <div class="research">
-        <ResearchToolbar @switchViewer="(value) => console.log(value)" />
+        <MainToolbar />
         <div class="research__viewer">
-            <ResearchList v-if="researchStore.modulesInViewer.ResearchList" />
-            <ReportsList v-if="researchStore.modulesInViewer.ReportsList" />
-            <NewResearchForm
-                v-if="researchStore.modulesInViewer.NewResearchForm"
-            />
+            <ResearchList v-if="mainStore.modulesInViewer.ResearchList" />
+            <ReportsList v-if="mainStore.modulesInViewer.ReportsList" />
+            <NewResearchForm v-if="mainStore.modulesInViewer.NewResearchForm" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import ResearchToolbar from 'components/MainModule/ResearchToolbar.vue'
+import MainToolbar from 'components/MainModule/MainToolbar.vue'
 import ResearchList from 'components/MainModule/ResearchList.vue'
 import ReportsList from 'components/MainModule/ReportsList.vue'
 import NewResearchForm from 'components/MainModule/NewResearchForm.vue'
-import {useResearchStore} from 'stores/ResearchStore'
+import {useMainStore} from 'stores/MainStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-const researchStore = useResearchStore()
+const mainStore = useMainStore()
 </script>
 
 <style scoped lang="sass">

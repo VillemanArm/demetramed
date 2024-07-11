@@ -4,7 +4,7 @@
             <BaseButton
                 label="Добавить исследование"
                 class="list__research-add"
-                @click="researchStore.setModuleInViewer('NewResearchForm')"
+                @click="mainStore.setModuleInViewer('NewResearchForm')"
             >
                 <AddBigIcon />
             </BaseButton>
@@ -67,12 +67,13 @@ import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
 import ResearchListItem from 'components/MainModule/ResearchListItem.vue'
 import {useResearchStore} from 'stores/ResearchStore'
-import {log} from 'console'
+import {useMainStore} from 'stores/MainStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
+const mainStore = useMainStore()
 const researchStore = useResearchStore()
 
 const currentPage = ref<number>(1)
