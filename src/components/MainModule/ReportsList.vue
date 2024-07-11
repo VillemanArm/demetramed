@@ -67,6 +67,10 @@ const setCurrentPage = (newValue: number) => {
   margin-bottom: 44rem
 
 .list__download-reports
+  padding: 15rem 14rem
+
+  font-size: 18rem
+
   background-color: $non-active-color
   border-color: $non-active-color
 
