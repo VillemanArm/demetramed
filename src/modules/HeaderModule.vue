@@ -3,7 +3,7 @@
         <RouterLink to="/">
             <div class="header__logo">
                 <img
-                    src="/img/logo.svg"
+                    src="~assets/img/logo.svg"
                     alt="Demetramed"
                 />
             </div>
@@ -18,7 +18,7 @@
             <div class="header__user">
                 <!-- получить аватар с сервера -->
                 <img
-                    src="/img/user.png"
+                    src="~assets/img/user.png"
                     alt=""
                 />
             </div>
