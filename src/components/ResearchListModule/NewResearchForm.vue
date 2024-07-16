@@ -99,7 +99,7 @@ const handleSaveClick = () => {
 .form
     width: 1116rem
     height: 728rem
-    margin: 39rem 0 0 45rem
+    margin: 39rem 0 0 0
     padding: 16rem 0 0 117rem
 
     font-size: 18rem

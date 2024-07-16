@@ -34,7 +34,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import ReportIcon from 'assets/icons/report-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
-import ReportsListItem from 'components/MainModule/ReportsListItem.vue'
+import ReportsListItem from 'components/ReportsListModule/ReportsListItem.vue'
 import {useReportsStore} from 'stores/ReportsStore'
 
 // //defineProps<{

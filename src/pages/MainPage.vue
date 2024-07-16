@@ -1,12 +1,12 @@
 <template>
     <q-page class="row">
-        <MainModule />
+        <NavModule />
     </q-page>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
-import MainModule from 'src/modules/MainModule.vue'
+import NavModule from 'src/modules/NavModule.vue'
 </script>
 
 <style></style>

@@ -4,7 +4,7 @@
             <BaseButton
                 label="Добавить исследование"
                 class="list__research-add"
-                @click="mainStore.setModuleInViewer('NewResearchForm')"
+                @click="isNewResearchForm = true"
             >
                 <AddBigIcon />
             </BaseButton>
@@ -39,7 +39,10 @@
             </div>
         </div>
 
-        <div class="list__items">
+        <div
+            class="list__items"
+            v-if="!isNewResearchForm"
+        >
             <ResearchListItem
                 v-for="researchItem in researchStore.searchedAndSortedResearchItems.slice(
                     displayedItemsFrom,
@@ -50,8 +53,10 @@
             />
         </div>
 
+        <NewResearchForm v-if="isNewResearchForm" />
+
         <BasePagination
-            v-if="maxPages > 1"
+            v-if="maxPages > 1 && !isNewResearchForm"
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
@@ -65,7 +70,8 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import AddBigIcon from 'assets/icons/add-big-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
-import ResearchListItem from 'components/MainModule/ResearchListItem.vue'
+import ResearchListItem from 'components/ResearchListModule/ResearchListItem.vue'
+import NewResearchForm from 'components/ResearchListModule/NewResearchForm.vue'
 import {useResearchStore} from 'stores/ResearchStore'
 import {useMainStore} from 'stores/MainStore'
 
@@ -75,6 +81,8 @@ import {useMainStore} from 'stores/MainStore'
 
 const mainStore = useMainStore()
 const researchStore = useResearchStore()
+
+const isNewResearchForm = ref<boolean>(false)
 
 const currentPage = ref<number>(1)
 const itemsByPage = 5
