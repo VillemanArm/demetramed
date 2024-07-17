@@ -7,23 +7,25 @@
             name="close"
             size="40rem"
             class="form__close"
-            @click="researchStore.isNewResearchForm = false"
+            @click="handleCloseClick"
         />
-        <span class="form__date">{{ newItem.researchDate }}</span>
+        <span class="form__date">{{
+            researchStore.newResearchItem.researchDate
+        }}</span>
         <div class="form__fields">
             <label for="researchNumber">№Исследования:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="researchNumber"
-                v-model="newItem.researchNumber"
+                v-model="researchStore.newResearchItem.researchNumber"
             />
             <label for="patientName">Пациент:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="patientName"
-                v-model="newItem.patientName"
+                v-model="researchStore.newResearchItem.patientName"
             />
             <label for="patientAge">Возраст:</label>
             <input
@@ -32,7 +34,7 @@
                 id="patientAge"
                 max="120"
                 min="1"
-                v-model="newItem.patientAge"
+                v-model="researchStore.newResearchItem.patientAge"
             />
             <label for="institutionByReferral"
                 >Учреждение по направлению:</label
@@ -41,28 +43,28 @@
                 class="form__input-field"
                 type="text"
                 id="institutionByReferral"
-                v-model="newItem.institutionByReferral"
+                v-model="researchStore.newResearchItem.institutionByReferral"
             />
             <label for="doctorsName">ФИО врача по направлению:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="doctorsName"
-                v-model="newItem.doctorsName"
+                v-model="researchStore.newResearchItem.doctorsName"
             />
             <label for="diagnosis">Клинический диагноз:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="diagnosis"
-                v-model="newItem.diagnosis"
+                v-model="researchStore.newResearchItem.diagnosis"
             />
             <label for="comment">Комментарий:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="comment"
-                v-model="newItem.comment"
+                v-model="researchStore.newResearchItem.comment"
             />
             <label for="file">Загрузить файл:</label>
             <!-- <input
@@ -73,7 +75,7 @@
             <q-file
                 id="file"
                 outlined
-                v-model="newItem.file"
+                v-model="researchStore.newResearchItem.file"
                 class="form__input-file"
             />
         </div>
@@ -81,21 +83,21 @@
             <BaseButton
                 label="Сохранить и закрыть"
                 class="form__button"
-                @click="handleSaveClick"
+                @click="handleSaveAndCloseClick"
             >
                 <SuccessIcon />
             </BaseButton>
             <BaseButton
                 label="Сохранить и остаться"
                 class="form__button"
-                @click="handleSaveClick"
+                @click="handleSaveAndStayClick"
             >
                 <SuccessIcon />
             </BaseButton>
             <BaseButton
                 label="Очистить"
-                class="form__button"
-                @click="handleSaveClick"
+                class="form__button form__button--outline"
+                @click="handleResetClick"
             >
                 <q-icon
                     name="close"
@@ -111,30 +113,27 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import SuccessIcon from 'assets/icons/success-icon.vue'
 import {useResearchStore} from 'stores/ResearchStore'
-// import type {ResearchItem} from 'stores/ResearchStore'
-
-//defineProps<{
-//	msg: string;
-//}>();
 
 const researchStore = useResearchStore()
 
-const date = new Date()
-const newItem = ref<newResearch>({
-    id: String(Date.now()),
-    researchNumber: '',
-    researchDate: date.toLocaleDateString().replaceAll('.', '/'),
-    patientName: '',
-    patientAge: null,
-    institutionByReferral: '',
-    doctorsName: '',
-    diagnosis: '',
-    comment: '',
-    file: null,
-})
+const handleCloseClick = () => {
+    researchStore.isNewResearchForm = false
+    researchStore.resetNewResearchItem()
+}
 
-const handleSaveClick = () => {
-    researchStore.addResearchItem(newItem.value)
+const handleSaveAndCloseClick = () => {
+    researchStore.addResearchItem()
+    researchStore.isNewResearchForm = false
+    researchStore.resetNewResearchItem()
+}
+
+const handleSaveAndStayClick = () => {
+    researchStore.addResearchItem()
+    researchStore.resetNewResearchItem()
+}
+
+const handleResetClick = () => {
+    researchStore.resetNewResearchItem()
 }
 </script>
 
@@ -181,7 +180,6 @@ const handleSaveClick = () => {
 .form__button
   padding: 14rem 12rem
 
-
   & svg
     width: 24rem
     height: 24rem
@@ -190,6 +188,20 @@ const handleSaveClick = () => {
 
   &:hover svg
     fill: $active-color
+
+.form__button--outline
+  background-color: transparent
+  color: $active-color
+
+  & svg
+    fill: $active-color
+
+  &:hover
+    background-color: $active-color
+    color: $white
+
+    & svg
+      fill: $white
 
 // .form__file-input::file-selector-button
 //   height: 54rem

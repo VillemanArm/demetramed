@@ -96,11 +96,39 @@ export const useResearchStore = defineStore('research', () => {
         )
     })
 
-    const addResearchItem = (newItem: ResearchItem) => {
-        researchItems.value.push(newItem)
+    const isNewResearchForm = ref<boolean>(false)
+
+    const newResearchItem = ref<newResearch>({
+        id: String(Date.now()),
+        researchNumber: '',
+        researchDate: new Date().toLocaleDateString().replaceAll('.', '/'),
+        patientName: '',
+        patientAge: null,
+        institutionByReferral: '',
+        doctorsName: '',
+        diagnosis: '',
+        comment: '',
+        file: null,
+    })
+
+    const addResearchItem = () => {
+        researchItems.value.push(newResearchItem.value)
     }
 
-    const isNewResearchForm = ref<boolean>(false)
+    const resetNewResearchItem = () => {
+        newResearchItem.value = {
+            id: String(Date.now()),
+            researchNumber: '',
+            researchDate: new Date().toLocaleDateString().replaceAll('.', '/'),
+            patientName: '',
+            patientAge: null,
+            institutionByReferral: '',
+            doctorsName: '',
+            diagnosis: '',
+            comment: '',
+            file: null,
+        }
+    }
 
     return {
         researchItems,
@@ -110,5 +138,7 @@ export const useResearchStore = defineStore('research', () => {
         searchQuery,
         addResearchItem,
         isNewResearchForm,
+        newResearchItem,
+        resetNewResearchItem,
     }
 })
