@@ -1,10 +1,13 @@
 <template>
     <div class="list">
-        <div class="list__toolbar">
+        <div
+            class="list__toolbar"
+            v-if="!researchStore.isNewResearchForm"
+        >
             <BaseButton
                 label="Добавить исследование"
                 class="list__research-add"
-                @click="isNewResearchForm = true"
+                @click="researchStore.isNewResearchForm = true"
             >
                 <AddBigIcon />
             </BaseButton>
@@ -41,7 +44,7 @@
 
         <div
             class="list__items"
-            v-if="!isNewResearchForm"
+            v-if="!researchStore.isNewResearchForm"
         >
             <ResearchListItem
                 v-for="researchItem in researchStore.searchedAndSortedResearchItems.slice(
@@ -53,10 +56,10 @@
             />
         </div>
 
-        <NewResearchForm v-if="isNewResearchForm" />
+        <NewResearchForm v-if="researchStore.isNewResearchForm" />
 
         <BasePagination
-            v-if="maxPages > 1 && !isNewResearchForm"
+            v-if="maxPages > 1 && !researchStore.isNewResearchForm"
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
@@ -73,16 +76,12 @@ import BasePagination from 'src/ui/BasePagination.vue'
 import ResearchListItem from 'components/ResearchListModule/ResearchListItem.vue'
 import NewResearchForm from 'components/ResearchListModule/NewResearchForm.vue'
 import {useResearchStore} from 'stores/ResearchStore'
-import {useMainStore} from 'stores/MainStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-const mainStore = useMainStore()
 const researchStore = useResearchStore()
-
-const isNewResearchForm = ref<boolean>(false)
 
 const currentPage = ref<number>(1)
 const itemsByPage = 5
@@ -149,3 +148,4 @@ const setCurrentPage = (newValue: number) => {
   gap: 24rem
   align-content: start
 </style>
+src/stores/NavStore

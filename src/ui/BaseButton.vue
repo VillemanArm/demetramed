@@ -32,6 +32,7 @@ defineProps<{
   background-color: $accent
   border: 2rem solid $accent
   color: $white
+  cursor: pointer
 
   transition: all 0.3s ease-in-out
 

@@ -6,14 +6,12 @@ declare global {}
 interface ModulesInViewer {
     ResearchList: boolean
     ReportsList: boolean
-    NewResearchForm: boolean
 }
 
-export const useMainStore = defineStore('main', () => {
+export const useNavStore = defineStore('main', () => {
     const modulesInViewer = ref<ModulesInViewer>({
         ResearchList: true,
         ReportsList: false,
-        NewResearchForm: false,
     })
 
     const setModuleInViewer = (ModuleName: string) => {

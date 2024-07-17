@@ -19,7 +19,7 @@ declare global {
         doctorsName: string
         diagnosis: string
         comment: string
-        file: string // посмотреть как отправляется файл с POST запросом
+        file: File | null // посмотреть как отправляется файл с POST запросом
     }
 }
 
@@ -100,6 +100,8 @@ export const useResearchStore = defineStore('research', () => {
         researchItems.value.push(newItem)
     }
 
+    const isNewResearchForm = ref<boolean>(false)
+
     return {
         researchItems,
         sortedResearchItems,
@@ -107,5 +109,6 @@ export const useResearchStore = defineStore('research', () => {
         searchedAndSortedResearchItems,
         searchQuery,
         addResearchItem,
+        isNewResearchForm,
     }
 })

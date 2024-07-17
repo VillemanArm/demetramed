@@ -1,7 +1,7 @@
 <template>
     <div class="toolbar">
         <q-input
-            v-model="mainStore.searchQuery"
+            v-model="NavStore.searchQuery"
             outlined
             placeholder="Поиск"
             clear-icon="close"
@@ -14,9 +14,9 @@
             </template>
             <template v-slot:append>
                 <q-icon
-                    v-if="mainStore.searchQuery"
+                    v-if="NavStore.searchQuery"
                     name="close"
-                    @click="mainStore.searchQuery = ''"
+                    @click="NavStore.searchQuery = ''"
                     class="cursor-pointer"
                     size="20rem"
                 />
@@ -27,18 +27,18 @@
                 :class="{
                     toolbar__option: true,
                     'toolbar__option--active':
-                        mainStore.modulesInViewer['ResearchList'],
+                        NavStore.modulesInViewer['ResearchList'],
                 }"
-                @click="mainStore.setModuleInViewer('ResearchList')"
+                @click="NavStore.setModuleInViewer('ResearchList')"
                 >Исследования</span
             >
             <span
                 :class="{
                     toolbar__option: true,
                     'toolbar__option--active':
-                        mainStore.modulesInViewer['ReportsList'],
+                        NavStore.modulesInViewer['ReportsList'],
                 }"
-                @click="mainStore.setModuleInViewer('ReportsList')"
+                @click="NavStore.setModuleInViewer('ReportsList')"
                 >Отчеты</span
             >
         </div>
@@ -48,13 +48,13 @@
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import SearchIcon from 'assets/icons/search-icon.vue'
-import {useMainStore} from 'stores/MainStore'
+import {useNavStore} from 'stores/NavStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-const mainStore = useMainStore()
+const NavStore = useNavStore()
 </script>
 
 <style scoped lang="sass">
@@ -96,3 +96,4 @@ const mainStore = useMainStore()
   border-radius: 8rem
   border-width: 2rem
 </style>
+src/stores/NavStore

@@ -3,63 +3,106 @@
         action=""
         class="form"
     >
+        <q-icon
+            name="close"
+            size="40rem"
+            class="form__close"
+            @click="researchStore.isNewResearchForm = false"
+        />
         <span class="form__date">{{ newItem.researchDate }}</span>
         <div class="form__fields">
-            <span>№Исследования:</span>
+            <label for="researchNumber">№Исследования:</label>
             <input
-                class="form__text-input"
+                class="form__input-field"
                 type="text"
+                id="researchNumber"
                 v-model="newItem.researchNumber"
             />
-            <span>Пациент:</span>
+            <label for="patientName">Пациент:</label>
             <input
-                class="form__text-input"
+                class="form__input-field"
                 type="text"
+                id="patientName"
                 v-model="newItem.patientName"
             />
-            <span>Возраст:</span>
+            <label for="patientAge">Возраст:</label>
             <input
-                class="form__text-input"
-                type="text"
+                class="form__input-field"
+                type="number"
+                id="patientAge"
+                max="120"
+                min="1"
                 v-model="newItem.patientAge"
             />
-            <span>Учреждение по направлению:</span>
+            <label for="institutionByReferral"
+                >Учреждение по направлению:</label
+            >
             <input
-                class="form__text-input"
+                class="form__input-field"
                 type="text"
+                id="institutionByReferral"
                 v-model="newItem.institutionByReferral"
             />
-            <span>ФИО врача по направлению:</span>
+            <label for="doctorsName">ФИО врача по направлению:</label>
             <input
-                class="form__text-input"
+                class="form__input-field"
                 type="text"
+                id="doctorsName"
                 v-model="newItem.doctorsName"
             />
-            <span>Клинический диагноз:</span>
+            <label for="diagnosis">Клинический диагноз:</label>
             <input
-                class="form__text-input"
+                class="form__input-field"
                 type="text"
+                id="diagnosis"
                 v-model="newItem.diagnosis"
             />
-            <span>Комментарий:</span>
+            <label for="comment">Комментарий:</label>
             <input
-                class="form__text-input"
+                class="form__input-field"
                 type="text"
+                id="comment"
                 v-model="newItem.comment"
             />
-            <span>Загрузить файл:</span>
-            <input
+            <label for="file">Загрузить файл:</label>
+            <!-- <input
                 type="file"
+                id="file"
                 class="form__file-input"
+            /> -->
+            <q-file
+                id="file"
+                outlined
+                v-model="newItem.file"
+                class="form__input-file"
             />
         </div>
-        <BaseButton
-            label="Сохранить"
-            class="form__button"
-            @click="handleSaveClick"
-        >
-            <SuccessIcon />
-        </BaseButton>
+        <div class="form__buttons">
+            <BaseButton
+                label="Сохранить и закрыть"
+                class="form__button"
+                @click="handleSaveClick"
+            >
+                <SuccessIcon />
+            </BaseButton>
+            <BaseButton
+                label="Сохранить и остаться"
+                class="form__button"
+                @click="handleSaveClick"
+            >
+                <SuccessIcon />
+            </BaseButton>
+            <BaseButton
+                label="Очистить"
+                class="form__button"
+                @click="handleSaveClick"
+            >
+                <q-icon
+                    name="close"
+                    size="24rem"
+                />
+            </BaseButton>
+        </div>
     </form>
 </template>
 
@@ -87,7 +130,7 @@ const newItem = ref<newResearch>({
     doctorsName: '',
     diagnosis: '',
     comment: '',
-    file: '',
+    file: null,
 })
 
 const handleSaveClick = () => {
@@ -98,31 +141,46 @@ const handleSaveClick = () => {
 <style scoped lang="sass">
 .form
     width: 1116rem
-    height: 728rem
-    margin: 39rem 0 0 0
-    padding: 16rem 0 0 117rem
+    min-height: 728rem
+    padding: 32rem 0 0 90rem
 
     font-size: 18rem
 
     border: 1rem solid $non-active-color
     border-radius: 8rem
 
+.form__close
+  margin-top: -16rem
+  margin-right: 16rem
+  float: right
+
+  cursor: pointer
+  color: $non-active-color
+
+  &:hover
+    color: $active-color
+
 .form__date
   display: block
-  margin: 0 0 8rem 854rem
+  margin-bottom: 16rem
 
 .form__fields
   display: grid
-  grid-template-columns: 184rem 972rem
+  grid-template-columns: 184rem 717rem
   gap: 16rem 24rem
   margin-bottom: 32rem
 
-  & span
+  & label
     align-self: center
 
-.form__button
-  padding: 16rem 12rem
+.form__buttons
   margin-left: 210rem
+  display: flex
+  gap: 16rem
+
+.form__button
+  padding: 14rem 12rem
+
 
   & svg
     width: 24rem
@@ -133,12 +191,39 @@ const handleSaveClick = () => {
   &:hover svg
     fill: $active-color
 
-.form__file-input::file-selector-button
-  height: 54rem
+// .form__file-input::file-selector-button
+//   height: 54rem
+//   margin-right: 16rem
+//   padding: 14rem 12rem
+//   display: inline-flex
+//   align-items: center
+//   gap: 8rem
 
-.form__text-input
-  width: 581rem
-  height: 54rem
+//   font-size: 16rem
+//   font-weight: 600
+
+//   border-radius: 8rem
+//   background-color: $accent
+//   border: 2rem solid $accent
+//   color: $white
+//   cursor: pointer
+
+//   transition: all 0.3s ease-in-out
+
+//   &:hover
+//     background-color: transparent
+//     color: $accent
+
+//   &>svg
+//     width: 20rem
+//     height: 20rem
+
+//   &>span
+//     display: inline-block
+
+.form__input-field
+  width: 720rem
+  height: 52rem
   padding: 16rem 32rem
 
   border: 1rem solid $non-active-color
@@ -147,4 +232,22 @@ const handleSaveClick = () => {
 
   &:focus
     border: 2rem solid $active-color
+
+.form__input-file
+  width: 720rem
+
+:deep(.q-field__control-container)
+  height: 52rem
+
+:deep(.q-field--auto-height .q-field__control, .q-field--auto-height .q-field__native)
+  min-height: 52rem
+
+:deep(.q-field__native.row.items-center.cursor-pointer)
+  min-height: 52rem
+
+:deep(.q-field--outlined .q-field__control:before )
+    border-color: $non-active-color
+
+:deep(.q-field--outlined.q-field--highlighted .q-field__control:after)
+    border-width: 1rem
 </style>

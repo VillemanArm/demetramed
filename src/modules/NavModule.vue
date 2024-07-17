@@ -1,29 +1,30 @@
 <template>
     <div class="research">
-        <MainToolbar />
+        <NavToolbar />
         <div class="research__viewer">
-            <ResearchListModule v-if="mainStore.modulesInViewer.ResearchList" />
-            <ReportsListModule v-if="mainStore.modulesInViewer.ReportsList" />
+            <ResearchListModule v-if="NavStore.modulesInViewer.ResearchList" />
+            <ReportsListModule v-if="NavStore.modulesInViewer.ReportsList" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import MainToolbar from 'components/NavModule/MainToolbar.vue'
+import NavToolbar from 'components/NavModule/NavToolbar.vue'
 import ResearchListModule from 'src/modules/ResearchListModule.vue'
 import ReportsListModule from 'src/modules/ReportsListModule.vue'
 
-import {useMainStore} from 'stores/MainStore'
+import {useNavStore} from 'stores/NavStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-const mainStore = useMainStore()
+const NavStore = useNavStore()
 </script>
 
 <style scoped lang="sass">
 .research
   display: flex
 </style>
+src/stores/NavStore
