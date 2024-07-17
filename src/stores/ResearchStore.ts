@@ -23,6 +23,16 @@ declare global {
     }
 }
 
+type SortOptions = 'date' | 'name' | 'number' | ''
+
+interface listRequestParameters {
+    searchQuery: string
+    sortOption: SortOptions
+    sortDescending: boolean
+    page: number
+    perPage: number
+}
+
 export const useResearchStore = defineStore('research', () => {
     const researchItems = ref<ResearchItem[]>([
         {
@@ -130,6 +140,22 @@ export const useResearchStore = defineStore('research', () => {
         }
     }
 
+    const listRequestParameters = ref<listRequestParameters>({
+        searchQuery: '',
+        sortOption: '',
+        sortDescending: true,
+        page: 1,
+        perPage: 5,
+    })
+
+    const setSortRequestParameters = (
+        sortOption: SortOptions,
+        sortDescending: boolean
+    ) => {
+        listRequestParameters.value.sortOption = sortOption
+        listRequestParameters.value.sortDescending = sortDescending
+    }
+
     return {
         researchItems,
         sortedResearchItems,
@@ -140,5 +166,7 @@ export const useResearchStore = defineStore('research', () => {
         isNewResearchForm,
         newResearchItem,
         resetNewResearchItem,
+        listRequestParameters,
+        setSortRequestParameters,
     }
 })
