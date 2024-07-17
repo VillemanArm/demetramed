@@ -3,12 +3,12 @@
         action=""
         class="form"
     >
-        <q-icon
-            name="close"
-            size="40rem"
+        <div
             class="form__close"
             @click="handleCloseClick"
-        />
+        >
+            <CloseIcon />
+        </div>
         <span class="form__date">{{
             researchStore.newResearchItem.researchDate
         }}</span>
@@ -99,10 +99,7 @@
                 class="form__button form__button--outline"
                 @click="handleResetClick"
             >
-                <q-icon
-                    name="close"
-                    size="24rem"
-                />
+                <CloseIcon />
             </BaseButton>
         </div>
     </form>
@@ -113,6 +110,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import SuccessIcon from 'assets/icons/success-icon.vue'
 import {useResearchStore} from 'stores/ResearchStore'
+import CloseIcon from 'assets/icons/close-icon.vue'
 
 const researchStore = useResearchStore()
 
@@ -149,15 +147,19 @@ const handleResetClick = () => {
     border-radius: 8rem
 
 .form__close
-  margin-top: -16rem
-  margin-right: 16rem
+  margin-top: -10rem
+  margin-right: 22rem
   float: right
 
   cursor: pointer
   color: $non-active-color
 
-  &:hover
-    color: $active-color
+  & svg
+    width: 28rem
+    height: 28rem
+
+    &:hover
+      fill: $active-color
 
 .form__date
   display: block
@@ -194,6 +196,9 @@ const handleResetClick = () => {
   color: $active-color
 
   & svg
+    width: 16rem
+    height: 16rem
+
     fill: $active-color
 
   &:hover
