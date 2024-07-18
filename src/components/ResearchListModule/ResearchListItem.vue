@@ -26,15 +26,15 @@ defineProps<{
 <style scoped lang="sass">
 .item
   width: 1119rem
-  height: 112rem
-  padding: 8rem 32rem
+  min-height: 86rem
+  padding: 0 32rem
   display: grid
   grid-template-columns: 130rem 270rem 356rem 1fr
   column-gap: 26rem
 
   font-size: 20rem
 
-  border-radius: 4rem
+  border-radius: 8rem
   border: 1px solid $non-active-color
   text-decoration: none
 
@@ -50,7 +50,7 @@ defineProps<{
 
 .item__button
   width: 220rem
-  padding: 18rem 14rem
+  padding: 14rem 14rem
   align-self: center
 
   font-size: 18rem

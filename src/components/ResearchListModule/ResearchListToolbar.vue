@@ -154,7 +154,7 @@ const researchStore = useResearchStore()
 <style scoped lang="sass">
 .toolbar
   display: flex
-  margin-bottom: 44rem
+  margin-bottom: 32rem
 
 .toolbar__research-add
   height: 52rem

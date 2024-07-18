@@ -39,7 +39,7 @@ export const useResearchStore = defineStore('research', () => {
             id: '1',
             researchNumber: '20201',
             researchDate: '14/09/2023',
-            patientName: 'Иванов Г. В.',
+            patientName: 'Ивановский Геннадий Владимирович',
         },
         {
             id: '2',
@@ -73,6 +73,54 @@ export const useResearchStore = defineStore('research', () => {
         },
         {
             id: '7',
+            researchNumber: '20207',
+            researchDate: '26/09/2023',
+            patientName: 'Соколов И.П.',
+        },
+        {
+            id: '8',
+            researchNumber: '20201',
+            researchDate: '14/09/2023',
+            patientName: 'Ивановский Геннадий Владимирович',
+        },
+        {
+            id: '9',
+            researchNumber: '20202',
+            researchDate: '15/10/2023',
+            patientName: 'Петров А. И.',
+        },
+        {
+            id: '10',
+            researchNumber: '20203',
+            researchDate: '26/09/2023',
+            patientName: 'Сидоров Н. П.',
+        },
+        {
+            id: '11',
+            researchNumber: '20204',
+            researchDate: '01/09/2023',
+            patientName: 'Козлова О. С.',
+        },
+        {
+            id: '12',
+            researchNumber: '20205',
+            researchDate: '12/09/2023',
+            patientName: 'Михайлов Д. В.',
+        },
+        {
+            id: '13',
+            researchNumber: '20206',
+            researchDate: '19/12/2023',
+            patientName: 'Новикова Е. А.',
+        },
+        {
+            id: '14',
+            researchNumber: '20207',
+            researchDate: '26/09/2023',
+            patientName: 'Соколов И.П.',
+        },
+        {
+            id: '15',
             researchNumber: '20207',
             researchDate: '26/09/2023',
             patientName: 'Соколов И.П.',

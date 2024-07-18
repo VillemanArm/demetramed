@@ -23,8 +23,8 @@ defineProps<{
 <style scoped lang="sass">
 .item
   width: 1119rem
-  height: 112rem
-  padding: 8rem 32rem
+  min-height: 86rem
+  padding: 0 32rem
   display: grid
   grid-template-columns: 130rem 270rem 290rem 1fr
   column-gap: 26rem

@@ -17,7 +17,7 @@
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
-            class="float-right"
+            class="float-right list__pagination"
         />
     </div>
 </template>
@@ -37,7 +37,7 @@ import {useReportsStore} from 'stores/ReportsStore'
 const reportsStore = useReportsStore()
 
 const currentPage = ref<number>(1)
-const itemsByPage = 5
+const itemsByPage = 7
 const maxPages = computed(() =>
     Math.ceil(reportsStore.reportItems.length / itemsByPage)
 )
@@ -51,7 +51,7 @@ const setCurrentPage = (newValue: number) => {
 <style scoped lang="sass">
 .list
   width: 1209rem
-  padding: 39rem 45rem 0 45rem
+  padding: 32rem 45rem 0 45rem
 
   text-align: center
 
@@ -59,36 +59,13 @@ const setCurrentPage = (newValue: number) => {
   display: flex
   margin-bottom: 44rem
 
-
-  // &__filter
-  //   display: flex
-
-  //   &-button
-  //     padding: 18rem 38rem
-
-  //     background-color: transparent
-  //     color: $non-active-color
-  //     border-color: $non-active-color
-  //     border-radius: 0
-
-
-  //     &:first-child
-  //       border-top-left-radius: 8rem
-  //       border-bottom-left-radius: 8rem
-
-  //     &:last-child
-  //       border-top-right-radius: 8rem
-  //       border-bottom-right-radius: 8rem
-
-  //     &:hover
-  //       background-color: $active-color
-  //       border-color: $active-color
-  //       color: $white
-
 .list__items
-  height: 658rem
+  min-height: 692rem
   margin-bottom: 32rem
   display: grid
-  gap: 24rem
+  gap: 16rem
   align-content: start
+
+.list__pagination
+  margin-bottom: 32rem
 </style>

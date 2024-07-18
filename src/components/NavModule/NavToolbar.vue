@@ -59,7 +59,7 @@ const NavStore = useNavStore()
 
 <style scoped lang="sass">
 .toolbar
-  padding: 39rem 64rem 0 64rem
+  padding: 32rem 64rem 0 64rem
 
 .toolbar__search
   width: 472rem

@@ -1,7 +1,7 @@
 <template>
-    <div class="research">
+    <div class="nav">
         <NavToolbar />
-        <div class="research__viewer">
+        <div class="nav__viewer">
             <ResearchListModule v-if="NavStore.modulesInViewer.ResearchList" />
             <ReportsListModule v-if="NavStore.modulesInViewer.ReportsList" />
         </div>
@@ -24,7 +24,7 @@ const NavStore = useNavStore()
 </script>
 
 <style scoped lang="sass">
-.research
+.nav
   display: flex
 </style>
 src/stores/NavStore

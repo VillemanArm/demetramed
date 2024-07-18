@@ -144,7 +144,7 @@ const reportsStore = useReportsStore()
 <style scoped lang="sass">
 .toolbar
   display: flex
-  margin-bottom: 44rem
+  margin-bottom: 32rem
 
 
 .toolbar__download-reports

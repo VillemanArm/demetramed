@@ -15,15 +15,15 @@
             />
         </div>
 
-        <NewResearchForm v-if="researchStore.isNewResearchForm" />
-
         <BasePagination
             v-if="maxPages > 1 && !researchStore.isNewResearchForm"
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
-            class="float-right"
+            class="float-right list__pagination"
         />
+
+        <NewResearchForm v-if="researchStore.isNewResearchForm" />
     </div>
 </template>
 
@@ -42,7 +42,7 @@ import {useResearchStore} from 'stores/ResearchStore'
 const researchStore = useResearchStore()
 
 const currentPage = ref<number>(1)
-const itemsByPage = 5
+const itemsByPage = 7
 const maxPages = computed(() =>
     Math.ceil(researchStore.researchItems.length / itemsByPage)
 )
@@ -55,12 +55,15 @@ const setCurrentPage = (newValue: number) => {
 
 <style scoped lang="sass">
 .list
-  padding: 39rem 45rem 0 45rem
+  padding: 32rem 45rem 32rem 45rem
 
 .list__items
-  height: 658rem
+  min-height: 692rem
   margin-bottom: 32rem
   display: grid
-  gap: 24rem
+  gap: 16rem
   align-content: start
+
+.list__pagination
+  margin-bottom: 32rem
 </style>
