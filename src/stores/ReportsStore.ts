@@ -12,6 +12,16 @@ declare global {
     }
 }
 
+type ReportsSortOptions = 'date' | 'name' | 'number' | ''
+
+interface ReportsListRequestParameters {
+    searchQuery: string
+    sortOption: ReportsSortOptions
+    sortDescending: boolean
+    page: number
+    perPage: number
+}
+
 export const useReportsStore = defineStore('reports', () => {
     const reportItems = ref<ReportItem[]>([
         {
@@ -72,34 +82,25 @@ export const useReportsStore = defineStore('reports', () => {
         },
     ])
 
-    // const sortOption = ref<keyof ReportItem | ''>('')
+    const listRequestParameters = ref<ReportsListRequestParameters>({
+        searchQuery: '',
+        sortOption: '',
+        sortDescending: true,
+        page: 1,
+        perPage: 5,
+    })
 
-    // const sortedResearchItems = computed<ResearchItem[]>(() => {
-    //     return [...researchItems.value].sort((research1, research2) =>
-    //         (
-    //             research1[sortOption.value as keyof ResearchItem] as string
-    //         )?.localeCompare(
-    //             research2[sortOption.value as keyof ResearchItem] as string
-    //         )
-    //     )
-    // })
-
-    // const searchQuery = ref<string>('')
-
-    // const searchedAndSortedResearchItems = computed<ResearchItem[]>(() => {
-    //     return sortedResearchItems.value.filter(
-    //         (research) =>
-    //             research.patientName
-    //                 .toLowerCase()
-    //                 .includes(searchQuery.value.toLowerCase()) ||
-    //             research.researchDate.includes(searchQuery.value) ||
-    //             research.researchNumber
-    //                 .toLowerCase()
-    //                 .includes(searchQuery.value.toLowerCase())
-    //     )
-    // })
+    const setSortRequestParameters = (
+        sortOption: ReportsSortOptions,
+        sortDescending: boolean
+    ) => {
+        listRequestParameters.value.sortOption = sortOption
+        listRequestParameters.value.sortDescending = sortDescending
+    }
 
     return {
         reportItems,
+        listRequestParameters,
+        setSortRequestParameters,
     }
 })

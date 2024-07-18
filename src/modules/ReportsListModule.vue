@@ -1,13 +1,6 @@
 <template>
     <div class="list">
-        <div class="list__toolbar">
-            <BaseButton
-                label="Скачать отчеты"
-                class="list__download-reports"
-            >
-                <ReportIcon />
-            </BaseButton>
-        </div>
+        <ReportsListToolbar />
         <div class="list__items">
             <ReportsListItem
                 v-for="reportItem in reportsStore.reportItems.slice(
@@ -31,10 +24,10 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import ReportIcon from 'assets/icons/report-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import BasePagination from 'src/ui/BasePagination.vue'
 import ReportsListItem from 'components/ReportsListModule/ReportsListItem.vue'
+import ReportsListToolbar from 'components/ReportsListModule/ReportsListToolbar.vue'
 import {useReportsStore} from 'stores/ReportsStore'
 
 // //defineProps<{
@@ -66,18 +59,6 @@ const setCurrentPage = (newValue: number) => {
   display: flex
   margin-bottom: 44rem
 
-.list__download-reports
-  padding: 15rem 14rem
-
-  font-size: 18rem
-
-  background-color: $non-active-color
-  border-color: $non-active-color
-
-  &:hover
-    background-color: $active-color
-    border-color: $active-color
-    color: $white
 
   // &__filter
   //   display: flex
