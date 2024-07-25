@@ -6,7 +6,6 @@
             placeholder="Поиск"
             clear-icon="close"
             class="toolbar__search"
-            input-class=""
             color="accent"
         >
             <template v-slot:prepend>
@@ -96,4 +95,3 @@ const NavStore = useNavStore()
   border-radius: 8rem
   border-width: 2rem
 </style>
-src/stores/NavStore

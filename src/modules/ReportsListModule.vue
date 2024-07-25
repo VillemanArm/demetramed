@@ -60,7 +60,7 @@ const setCurrentPage = (newValue: number) => {
   margin-bottom: 44rem
 
 .list__items
-  min-height: 692rem
+  min-height: 700rem
   margin-bottom: 32rem
   display: grid
   gap: 16rem

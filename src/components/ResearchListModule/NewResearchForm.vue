@@ -20,7 +20,7 @@
                 id="researchNumber"
                 v-model="researchStore.newResearchItem.researchNumber"
             />
-            <label for="patientName">Пациент:</label>
+            <label for="patientName">ФИО пациента:</label>
             <input
                 class="form__input-field"
                 type="text"
@@ -36,16 +36,14 @@
                 min="1"
                 v-model="researchStore.newResearchItem.patientAge"
             />
-            <label for="institutionByReferral"
-                >Учреждение по направлению:</label
-            >
+            <label for="institutionByReferral">Направившее учреждение:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="institutionByReferral"
                 v-model="researchStore.newResearchItem.institutionByReferral"
             />
-            <label for="doctorsName">ФИО врача по направлению:</label>
+            <label for="doctorsName">ФИО лечащего врача:</label>
             <input
                 class="form__input-field"
                 type="text"
@@ -67,11 +65,6 @@
                 v-model="researchStore.newResearchItem.comment"
             />
             <label for="file">Загрузить файл:</label>
-            <!-- <input
-                type="file"
-                id="file"
-                class="form__file-input"
-            /> -->
             <q-file
                 id="file"
                 outlined
@@ -207,36 +200,6 @@ const handleResetClick = () => {
 
     & svg
       fill: $white
-
-// .form__file-input::file-selector-button
-//   height: 54rem
-//   margin-right: 16rem
-//   padding: 14rem 12rem
-//   display: inline-flex
-//   align-items: center
-//   gap: 8rem
-
-//   font-size: 16rem
-//   font-weight: 600
-
-//   border-radius: 8rem
-//   background-color: $accent
-//   border: 2rem solid $accent
-//   color: $white
-//   cursor: pointer
-
-//   transition: all 0.3s ease-in-out
-
-//   &:hover
-//     background-color: transparent
-//     color: $accent
-
-//   &>svg
-//     width: 20rem
-//     height: 20rem
-
-//   &>span
-//     display: inline-block
 
 .form__input-field
   width: 720rem

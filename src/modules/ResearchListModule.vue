@@ -58,7 +58,7 @@ const setCurrentPage = (newValue: number) => {
   padding: 32rem 45rem 32rem 45rem
 
 .list__items
-  min-height: 692rem
+  min-height: 700rem
   margin-bottom: 32rem
   display: grid
   gap: 16rem

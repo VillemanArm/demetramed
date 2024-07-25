@@ -51,7 +51,6 @@
                 </div>
             </div>
             <div
-                label="По пациенту"
                 :class="{
                     'toolbar__filter-option': true,
                     'toolbar__filter-option--active':
@@ -91,7 +90,6 @@
                 </div>
             </div>
             <div
-                label="По номеру исследования"
                 :class="{
                     'toolbar__filter-option': true,
                     'toolbar__filter-option--active':
@@ -199,11 +197,10 @@ const researchStore = useResearchStore()
 
 .toolbar__sort-direction
   display: grid
-  gap: 6rem
 
   & svg
-    width: 10rem
-    height: 10rem
+    width: 18rem
+    height: 18rem
 
     cursor: pointer
 
@@ -211,10 +208,10 @@ const researchStore = useResearchStore()
       fill: $active-color
 
     &:first-child
-      transform: rotate(-90deg) scale(2.2)
+      transform: rotate(-90deg)
 
     &:last-child
-      transform: rotate(90deg)  scale(2.2)
+      transform: rotate(90deg)
 
   &--active
     fill: $active-color
