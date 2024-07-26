@@ -1,12 +1,9 @@
 <template>
-    <div
-        class="toolbar"
-        v-if="!researchStore.isNewResearchForm"
-    >
+    <div class="toolbar">
         <BaseButton
             label="Добавить исследование"
             class="toolbar__research-add"
-            @click="researchStore.isNewResearchForm = true"
+            @click="handleResearchAddClick"
         >
             <AddBigIcon />
         </BaseButton>
@@ -147,6 +144,11 @@ import {useResearchStore} from 'stores/ResearchStore'
 //}>();
 
 const researchStore = useResearchStore()
+
+const handleResearchAddClick = () => {
+    researchStore.isNewResearchForm = true
+    researchStore.getNewResearchData()
+}
 </script>
 
 <style scoped lang="sass">
@@ -158,6 +160,10 @@ const researchStore = useResearchStore()
   height: 52rem
   padding: 12rem 14rem
   margin-right: 23rem
+
+  & svg
+    width: 20rem
+    height: 20rem
 
   &:hover svg
     fill: $active-color

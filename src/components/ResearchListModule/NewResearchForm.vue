@@ -37,12 +37,22 @@
                 v-model="researchStore.newResearchItem.patientAge"
             />
             <label for="institutionByReferral">Направившее учреждение:</label>
-            <input
+            <select
                 class="form__input-field"
-                type="text"
                 id="institutionByReferral"
                 v-model="researchStore.newResearchItem.institutionByReferral"
-            />
+            >
+                <option value=""></option>
+                <option
+                    v-for="(
+                        institution, index
+                    ) of researchStore.institutionsByReferral"
+                    :value="institution"
+                    :key="index"
+                >
+                    {{ institution }}
+                </option>
+            </select>
             <label for="doctorsName">ФИО лечащего врача:</label>
             <input
                 class="form__input-field"
@@ -126,6 +136,10 @@ const handleSaveAndStayClick = () => {
 const handleResetClick = () => {
     researchStore.resetNewResearchItem()
 }
+
+// onMounted(() => {
+
+// })
 </script>
 
 <style scoped lang="sass">
@@ -231,3 +245,4 @@ const handleResetClick = () => {
 :deep(.q-field--outlined.q-field--highlighted .q-field__control:after)
     border-width: 1rem
 </style>
+src/common_functions/researchApi

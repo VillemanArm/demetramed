@@ -17,7 +17,7 @@
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
-            class="float-right list__pagination"
+            class="list__pagination"
         />
     </div>
 </template>
@@ -68,4 +68,5 @@ const setCurrentPage = (newValue: number) => {
 
 .list__pagination
   margin-bottom: 32rem
+  float: right
 </style>

@@ -1,12 +1,12 @@
 <template>
     <div class="list">
-        <ResearchListToolbar />
+        <ResearchListToolbar v-if="!researchStore.isNewResearchForm" />
         <div
             class="list__items"
             v-if="!researchStore.isNewResearchForm"
         >
             <ResearchListItem
-                v-for="researchItem in researchStore.searchedAndSortedResearchItems.slice(
+                v-for="researchItem in researchStore.researchItems.slice(
                     displayedItemsFrom,
                     displayedItemsTo
                 )"
@@ -20,7 +20,7 @@
             :maxPages="maxPages"
             :currentPage="currentPage"
             @changePage="(value) => setCurrentPage(value)"
-            class="float-right list__pagination"
+            class="list__pagination"
         />
 
         <NewResearchForm v-if="researchStore.isNewResearchForm" />
@@ -48,9 +48,14 @@ const maxPages = computed(() =>
 )
 const displayedItemsFrom = computed(() => (currentPage.value - 1) * itemsByPage)
 const displayedItemsTo = computed(() => displayedItemsFrom.value + itemsByPage)
+
 const setCurrentPage = (newValue: number) => {
     currentPage.value = newValue
 }
+
+// onMounted(() => {
+//     researchStore.getResearchList()
+// })
 </script>
 
 <style scoped lang="sass">
@@ -66,4 +71,6 @@ const setCurrentPage = (newValue: number) => {
 
 .list__pagination
   margin-bottom: 32rem
+  float: right
 </style>
+src/common_functions/researchApi
