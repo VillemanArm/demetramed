@@ -1,23 +1,6 @@
 import axios from 'axios'
 
-// declare global {
-//     interface Response {
-//         config: Object
-//         data: []
-//         headers: Object
-//         request: Object
-//     }
-// }
-
 export default class ResearchApi {
-    // baseURL: string
-    // token: string
-    // userName: string
-    // password: string
-    //logStore: any // Store Если будет время поискать, как задать тип для store
-
-    //constructor() {}
-
     protected baseURL = 'http://51.250.28.160:5005/api'
 
     getNewResearchData = async (): Promise<
@@ -36,6 +19,14 @@ export default class ResearchApi {
         return data
     }
 
+    addNewResearch = async (newResearch: newResearch) => {
+        axios
+            .post(`${this.baseURL}/new-research-add`, newResearch)
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     getResearchList = async (
         params: ResearchListRequestParameters
     ): Promise<ResearchItem[] | undefined> => {
@@ -50,5 +41,15 @@ export default class ResearchApi {
             })
 
         return data
+    }
+
+    startAnalysis = (id: string) => {
+        axios
+            .post(`${this.baseURL}/research`, {
+                id: id,
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 }

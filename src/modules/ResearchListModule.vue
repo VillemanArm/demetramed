@@ -53,9 +53,9 @@ const setCurrentPage = (newValue: number) => {
     currentPage.value = newValue
 }
 
-// onMounted(() => {
-//     researchStore.getResearchList()
-// })
+onMounted(() => {
+    researchStore.getResearchList()
+})
 </script>
 
 <style scoped lang="sass">

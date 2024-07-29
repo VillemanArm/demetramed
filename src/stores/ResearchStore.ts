@@ -33,7 +33,6 @@ declare global {
 
     interface NewResearchCreationData {
         id: string
-        researchNumber: string
         institutionByReferral: string[]
     }
 }
@@ -196,7 +195,11 @@ export const useResearchStore = defineStore('research', () => {
     const newResearchItem = ref<newResearch>({
         id: '',
         researchNumber: '',
-        researchDate: new Date().toLocaleDateString().replaceAll('.', '/'),
+        researchDate: new Date()
+            .toLocaleDateString()
+            .split('.')
+            .reverse()
+            .join('-'),
         patientName: '',
         patientAge: null,
         institutionByReferral: '',
@@ -218,22 +221,25 @@ export const useResearchStore = defineStore('research', () => {
 
         if (newResearchCreationData) {
             newResearchItem.value.id = newResearchCreationData.id
-            newResearchItem.value.researchNumber =
-                newResearchCreationData.researchNumber
             institutionsByReferral.value =
                 newResearchCreationData.institutionByReferral
         }
     }
 
-    const addResearchItem = () => {
-        researchItems.value.push(newResearchItem.value)
+    const addNewResearch = () => {
+        researchApi.addNewResearch(newResearchItem.value)
+        console.log(newResearchItem.value)
     }
 
     const resetNewResearchItem = () => {
         newResearchItem.value = {
-            id: String(Date.now()),
+            id: '',
             researchNumber: '',
-            researchDate: new Date().toLocaleDateString().replaceAll('.', '/'),
+            researchDate: new Date()
+                .toLocaleDateString()
+                .split('.')
+                .reverse()
+                .join('-'),
             patientName: '',
             patientAge: null,
             institutionByReferral: '',
@@ -242,9 +248,14 @@ export const useResearchStore = defineStore('research', () => {
             comment: '',
             file: null,
         }
+        getNewResearchData()
     }
 
-    getResearchList()
+    const startAnalysis = (id: string) => {
+        researchApi.startAnalysis(id)
+    }
+
+    //getResearchList()
 
     return {
         researchItems,
@@ -252,7 +263,7 @@ export const useResearchStore = defineStore('research', () => {
         // sortOption,
         // searchedAndSortedResearchItems,
         // searchQuery,
-        addResearchItem,
+        addNewResearch,
         isNewResearchForm,
         newResearchItem,
         resetNewResearchItem,
@@ -261,5 +272,6 @@ export const useResearchStore = defineStore('research', () => {
         getResearchList,
         getNewResearchData,
         institutionsByReferral,
+        startAnalysis,
     }
 })

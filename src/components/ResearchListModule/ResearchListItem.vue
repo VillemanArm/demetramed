@@ -1,11 +1,14 @@
 <template>
     <div class="item">
-        <span>{{ researchItem.researchDate }}</span>
+        <span>{{
+            researchItem.researchDate.split('-').reverse().join('/')
+        }}</span>
         <span>Исследование №{{ researchItem.researchNumber }}</span>
         <span>{{ researchItem.patientName }}</span>
         <BaseButton
             class="item__button"
             label="Начать анализ"
+            @click="researchStore.startAnalysis(researchItem.id)"
         >
             <AnalysisIcon />
         </BaseButton>
@@ -16,11 +19,13 @@
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import AnalysisIcon from 'assets/icons/analysis-icon.vue'
-// import type {ResearchItem} from 'stores/ResearchStore'
+import {useResearchStore} from 'src/stores/ResearchStore'
 
 defineProps<{
     researchItem: ResearchItem
 }>()
+
+const researchStore = useResearchStore()
 </script>
 
 <style scoped lang="sass">

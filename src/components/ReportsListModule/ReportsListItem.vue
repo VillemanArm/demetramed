@@ -3,8 +3,8 @@
         :to="`report/:${reportItem.id}`"
         class="item"
     >
-        <span>{{ reportItem.researchDate }}</span>
-        <span>Исследование №{{ reportItem.researchNumber }}</span>
+        <span>{{ reportItem.reportDate }}</span>
+        <span>Исследование №{{ reportItem.reportNumber }}</span>
         <span>{{ reportItem.patientName }}</span>
         <span>Атипичных объектов: {{ reportItem.atypicalObjectsAmount }}</span>
     </RouterLink>

@@ -3,6 +3,7 @@
         <BaseButton
             label="Скачать отчеты"
             class="toolbar__download-reports"
+            @click="reportsStore.getReportFile"
         >
             <ReportIcon />
         </BaseButton>
@@ -156,6 +157,10 @@ const reportsStore = useReportsStore()
 
   background-color: $non-active-color
   border-color: $non-active-color
+
+  &>svg
+    width: 24rem
+    height: 24rem
 
   &:hover
     background-color: $active-color

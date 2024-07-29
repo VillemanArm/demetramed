@@ -11,6 +11,9 @@
         </div>
         <span class="form__date">{{
             researchStore.newResearchItem.researchDate
+                .split('-')
+                .reverse()
+                .join('/')
         }}</span>
         <div class="form__fields">
             <label for="researchNumber">№Исследования:</label>
@@ -120,16 +123,18 @@ const researchStore = useResearchStore()
 const handleCloseClick = () => {
     researchStore.isNewResearchForm = false
     researchStore.resetNewResearchItem()
+    researchStore.getResearchList()
 }
 
 const handleSaveAndCloseClick = () => {
-    researchStore.addResearchItem()
+    researchStore.addNewResearch()
     researchStore.isNewResearchForm = false
     researchStore.resetNewResearchItem()
+    researchStore.getResearchList()
 }
 
 const handleSaveAndStayClick = () => {
-    researchStore.addResearchItem()
+    researchStore.addNewResearch()
     researchStore.resetNewResearchItem()
 }
 
