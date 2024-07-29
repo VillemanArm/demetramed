@@ -1,6 +1,7 @@
 import {ref, computed, watch} from 'vue'
 import {defineStore} from 'pinia'
 import ResearchApi from 'src/common_functions/researchApi'
+import {log} from 'console'
 
 declare global {
     interface ResearchItem {
@@ -156,6 +157,14 @@ export const useResearchStore = defineStore('research', () => {
             })
     }
 
+    watch(
+        listRequestParameters,
+        () => {
+            getResearchList()
+        },
+        {deep: true}
+    )
+
     const isNewResearchForm = ref<boolean>(false)
 
     const newResearchData = ref<NewResearchData>({
@@ -205,8 +214,6 @@ export const useResearchStore = defineStore('research', () => {
     const startAnalysis = (id: string) => {
         researchApi.startAnalysis(id)
     }
-
-    //getResearchList()
 
     return {
         researchItems,
