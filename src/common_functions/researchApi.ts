@@ -4,7 +4,7 @@ export default class ResearchApi {
     protected baseURL = 'http://51.250.28.160:5005/api'
 
     getNewResearchData = async (): Promise<
-        NewResearchCreationData | undefined
+        NewResearchServerData | undefined
     > => {
         let data
         await axios
@@ -19,12 +19,25 @@ export default class ResearchApi {
         return data
     }
 
-    addNewResearch = async (newResearch: newResearch) => {
-        axios
-            .post(`${this.baseURL}/new-research-add`, newResearch)
-            .catch((error) => {
-                console.log(error)
-            })
+    addNewResearch = async (newResearch: FormData) => {
+        // axios
+        //     .post(`${this.baseURL}/new-research-add`, {
+        //         headers: {
+        //             'Content-Type': 'multipart/form-data',
+        //         },
+        //         body: newResearch,
+        //     })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     })
+
+        fetch(`${this.baseURL}/new-research-add`, {
+            method: 'POST',
+            body: newResearch,
+        })
+            .then((response) => response.json())
+            .then((data) => console.log('Success:', data))
+            .catch((error) => console.error('Error:', error))
     }
 
     getResearchList = async (

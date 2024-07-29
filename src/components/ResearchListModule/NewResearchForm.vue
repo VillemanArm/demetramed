@@ -1,8 +1,5 @@
 <template>
-    <form
-        action=""
-        class="form"
-    >
+    <div class="form">
         <div
             class="form__close"
             @click="handleCloseClick"
@@ -10,46 +7,48 @@
             <CloseIcon />
         </div>
         <span class="form__date">{{
-            researchStore.newResearchItem.researchDate
+            researchStore.newResearchData.researchDate
                 .split('-')
                 .reverse()
                 .join('/')
         }}</span>
-        <div class="form__fields">
+        <form
+            class="form__fields"
+            ref="newResearchForm"
+        >
             <label for="researchNumber">№Исследования:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="researchNumber"
-                v-model="researchStore.newResearchItem.researchNumber"
+                name="researchNumber"
             />
             <label for="patientName">ФИО пациента:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="patientName"
-                v-model="researchStore.newResearchItem.patientName"
+                name="patientName"
             />
             <label for="patientAge">Возраст:</label>
             <input
                 class="form__input-field"
                 type="number"
                 id="patientAge"
+                name="patientAge"
                 max="120"
                 min="1"
-                v-model="researchStore.newResearchItem.patientAge"
             />
             <label for="institutionByReferral">Направившее учреждение:</label>
             <select
                 class="form__input-field"
                 id="institutionByReferral"
-                v-model="researchStore.newResearchItem.institutionByReferral"
+                name="institutionByReferral"
             >
                 <option value=""></option>
                 <option
-                    v-for="(
-                        institution, index
-                    ) of researchStore.institutionsByReferral"
+                    v-for="(institution, index) of researchStore.newResearchData
+                        .institutionsByReferral"
                     :value="institution"
                     :key="index"
                 >
@@ -61,30 +60,30 @@
                 class="form__input-field"
                 type="text"
                 id="doctorsName"
-                v-model="researchStore.newResearchItem.doctorsName"
+                name="doctorsName"
             />
             <label for="diagnosis">Клинический диагноз:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="diagnosis"
-                v-model="researchStore.newResearchItem.diagnosis"
+                name="diagnosis"
             />
             <label for="comment">Комментарий:</label>
             <input
                 class="form__input-field"
                 type="text"
                 id="comment"
-                v-model="researchStore.newResearchItem.comment"
+                name="comment"
             />
             <label for="file">Загрузить файл:</label>
-            <q-file
+            <input
+                type="file"
                 id="file"
-                outlined
-                v-model="researchStore.newResearchItem.file"
+                name="file"
                 class="form__input-file"
             />
-        </div>
+        </form>
         <div class="form__buttons">
             <BaseButton
                 label="Сохранить и закрыть"
@@ -108,7 +107,7 @@
                 <CloseIcon />
             </BaseButton>
         </div>
-    </form>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -120,31 +119,31 @@ import CloseIcon from 'assets/icons/close-icon.vue'
 
 const researchStore = useResearchStore()
 
+const newResearchForm = ref()
+
 const handleCloseClick = () => {
     researchStore.isNewResearchForm = false
-    researchStore.resetNewResearchItem()
+    researchStore.resetNewResearchData()
     researchStore.getResearchList()
 }
 
-const handleSaveAndCloseClick = () => {
-    researchStore.addNewResearch()
+const handleSaveAndCloseClick = async () => {
     researchStore.isNewResearchForm = false
-    researchStore.resetNewResearchItem()
+    const newResearchData: FormData = new FormData(newResearchForm.value)
+    await researchStore.addNewResearch(newResearchData)
+    researchStore.resetNewResearchData()
     researchStore.getResearchList()
 }
 
 const handleSaveAndStayClick = () => {
-    researchStore.addNewResearch()
-    researchStore.resetNewResearchItem()
+    const newResearchData = new FormData(newResearchForm.value)
+    researchStore.addNewResearch(newResearchData)
+    researchStore.resetNewResearchData()
 }
 
 const handleResetClick = () => {
-    researchStore.resetNewResearchItem()
+    researchStore.resetNewResearchData()
 }
-
-// onMounted(() => {
-
-// })
 </script>
 
 <style scoped lang="sass">
@@ -221,7 +220,6 @@ const handleResetClick = () => {
       fill: $white
 
 .form__input-field
-  width: 720rem
   height: 52rem
   padding: 16rem 32rem
 
@@ -233,21 +231,25 @@ const handleResetClick = () => {
     border: 2rem solid $active-color
 
 .form__input-file
-  width: 720rem
+    height: 52rem
+    padding-top: 3rem
 
-:deep(.q-field__control-container)
-  height: 52rem
+    border-radius: 4rem
+    border: 1rem solid $non-active-color
 
-:deep(.q-field--auto-height .q-field__control, .q-field--auto-height .q-field__native)
-  min-height: 52rem
 
-:deep(.q-field__native.row.items-center.cursor-pointer)
-  min-height: 52rem
+    &::file-selector-button
+        height: 52rem
+        margin-right: 16rem
+        padding: 0 4rem
 
-:deep(.q-field--outlined .q-field__control:before )
-    border-color: $non-active-color
+        font-size: 1rem
 
-:deep(.q-field--outlined.q-field--highlighted .q-field__control:after)
-    border-width: 1rem
+        background-color: transparent
+        border: 2rem solid transparent
+        color: transparent
+
+
+    &:focus
+        border: 2rem solid $active-color
 </style>
-src/common_functions/researchApi

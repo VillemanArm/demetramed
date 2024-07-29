@@ -18,20 +18,13 @@ declare global {
         perPage: number
     }
 
-    interface newResearch {
+    interface NewResearchData {
         id: string
-        researchNumber: string
         researchDate: string
-        patientName: string
-        patientAge: number | null
-        institutionByReferral: string
-        doctorsName: string
-        diagnosis: string
-        comment: string
-        file: File | null // посмотреть как отправляется файл с POST запросом
+        institutionsByReferral: string[]
     }
 
-    interface NewResearchCreationData {
+    interface NewResearchServerData {
         id: string
         institutionByReferral: string[]
     }
@@ -163,90 +156,48 @@ export const useResearchStore = defineStore('research', () => {
             })
     }
 
-    // const sortOption = ref<keyof ResearchItem | ''>('')
-
-    // const sortedResearchItems = computed<ResearchItem[]>(() => {
-    //     return [...researchItems.value].sort((research1, research2) =>
-    //         (
-    //             research1[sortOption.value as keyof ResearchItem] as string
-    //         )?.localeCompare(
-    //             research2[sortOption.value as keyof ResearchItem] as string
-    //         )
-    //     )
-    // })
-
-    // const searchQuery = ref<string>('')
-
-    // const searchedAndSortedResearchItems = computed<ResearchItem[]>(() => {
-    //     return sortedResearchItems.value.filter(
-    //         (research) =>
-    //             research.patientName
-    //                 .toLowerCase()
-    //                 .includes(searchQuery.value.toLowerCase()) ||
-    //             research.researchDate.includes(searchQuery.value) ||
-    //             research.researchNumber
-    //                 .toLowerCase()
-    //                 .includes(searchQuery.value.toLowerCase())
-    //     )
-    // })
-
     const isNewResearchForm = ref<boolean>(false)
 
-    const newResearchItem = ref<newResearch>({
+    const newResearchData = ref<NewResearchData>({
         id: '',
-        researchNumber: '',
         researchDate: new Date()
             .toLocaleDateString()
             .split('.')
             .reverse()
             .join('-'),
-        patientName: '',
-        patientAge: null,
-        institutionByReferral: '',
-        doctorsName: '',
-        diagnosis: '',
-        comment: '',
-        file: null,
+        institutionsByReferral: [],
     })
 
-    const institutionsByReferral = ref<string[]>([])
-
     const getNewResearchData = async () => {
-        let newResearchCreationData: NewResearchCreationData | undefined
+        let newResearchServerData: NewResearchServerData | undefined
         await researchApi.getNewResearchData()?.then((data) => {
             if (data) {
-                newResearchCreationData = data
+                newResearchServerData = data
             }
         })
 
-        if (newResearchCreationData) {
-            newResearchItem.value.id = newResearchCreationData.id
-            institutionsByReferral.value =
-                newResearchCreationData.institutionByReferral
+        if (newResearchServerData) {
+            newResearchData.value.id = newResearchServerData.id
+            newResearchData.value.institutionsByReferral =
+                newResearchServerData.institutionByReferral
         }
     }
 
-    const addNewResearch = () => {
-        researchApi.addNewResearch(newResearchItem.value)
-        console.log(newResearchItem.value)
+    const addNewResearch = (newResearch: FormData) => {
+        newResearch.append('researchDate', newResearchData.value.researchDate)
+        newResearch.append('researchDate', newResearchData.value.id)
+        researchApi.addNewResearch(newResearch)
     }
 
-    const resetNewResearchItem = () => {
-        newResearchItem.value = {
+    const resetNewResearchData = () => {
+        newResearchData.value = {
             id: '',
-            researchNumber: '',
             researchDate: new Date()
                 .toLocaleDateString()
                 .split('.')
                 .reverse()
                 .join('-'),
-            patientName: '',
-            patientAge: null,
-            institutionByReferral: '',
-            doctorsName: '',
-            diagnosis: '',
-            comment: '',
-            file: null,
+            institutionsByReferral: [],
         }
         getNewResearchData()
     }
@@ -265,13 +216,12 @@ export const useResearchStore = defineStore('research', () => {
         // searchQuery,
         addNewResearch,
         isNewResearchForm,
-        newResearchItem,
-        resetNewResearchItem,
+        newResearchData,
+        resetNewResearchData,
         listRequestParameters,
         setSortRequestParameters,
         getResearchList,
         getNewResearchData,
-        institutionsByReferral,
         startAnalysis,
     }
 })
