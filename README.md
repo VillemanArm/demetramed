@@ -41,3 +41,5 @@ quasar build
 Для корректного отображения изображений в собранном проекте их надо сохранять в папке src/assets/img/, а пути к ним указывать через ~assets/img/...
 
 Для отладки приложения нужно обойти CORS политику браузера с помощью расширения для chrome [Сross Domain - CORS](https://chromewebstore.google.com/detail/mjhpgnbimicffchbodmgfnemoghjakai)
+
+При смене домена сервера нужно изменить переменную baseURL в файлах src/common_functions/reportsApi.ts и src/common_functions/researchApi.ts
