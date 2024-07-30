@@ -42,12 +42,16 @@ import {useResearchStore} from 'stores/ResearchStore'
 const researchStore = useResearchStore()
 
 const currentPage = ref<number>(1)
-const itemsByPage = 7
+const itemsByPage = ref<number>(7)
 const maxPages = computed(() =>
-    Math.ceil(researchStore.researchItems.length / itemsByPage)
+    Math.ceil(researchStore.researchItems.length / itemsByPage.value)
 )
-const displayedItemsFrom = computed(() => (currentPage.value - 1) * itemsByPage)
-const displayedItemsTo = computed(() => displayedItemsFrom.value + itemsByPage)
+const displayedItemsFrom = computed(
+    () => (currentPage.value - 1) * itemsByPage.value
+)
+const displayedItemsTo = computed(
+    () => displayedItemsFrom.value + itemsByPage.value
+)
 
 const setCurrentPage = (newValue: number) => {
     currentPage.value = newValue

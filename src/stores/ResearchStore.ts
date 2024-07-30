@@ -146,6 +146,10 @@ export const useResearchStore = defineStore('research', () => {
         listRequestParameters.value.sortDescending = sortDescending
     }
 
+    const setSearchRequestParameter = (newQuery: string) => {
+        listRequestParameters.value.searchQuery = newQuery
+    }
+
     const getResearchList = () => {
         researchItems.value = []
         researchApi
@@ -211,16 +215,13 @@ export const useResearchStore = defineStore('research', () => {
         getNewResearchData()
     }
 
-    const startAnalysis = (id: string) => {
-        researchApi.startAnalysis(id)
+    const startAnalysis = async (id: string) => {
+        await researchApi.startAnalysis(id)
+        researchApi.getResearchList(listRequestParameters.value)
     }
 
     return {
         researchItems,
-        // sortedResearchItems,
-        // sortOption,
-        // searchedAndSortedResearchItems,
-        // searchQuery,
         addNewResearch,
         isNewResearchForm,
         newResearchData,
@@ -230,5 +231,6 @@ export const useResearchStore = defineStore('research', () => {
         getResearchList,
         getNewResearchData,
         startAnalysis,
+        setSearchRequestParameter,
     }
 })

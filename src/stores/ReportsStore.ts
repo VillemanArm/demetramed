@@ -167,6 +167,10 @@ export const useReportsStore = defineStore('reports', () => {
         listRequestParameters.value.sortDescending = sortDescending
     }
 
+    const setSearchRequestParameter = (newQuery: string) => {
+        listRequestParameters.value.searchQuery = newQuery
+    }
+
     const getReportsList = () => {
         reportItems.value = []
         reportsApi.getReportsList(listRequestParameters.value).then((data) => {
@@ -177,14 +181,22 @@ export const useReportsStore = defineStore('reports', () => {
     }
 
     const getReportFile = () => {
-        //
+        // реализовать механизм выбора отчета для скачивания соответствующего файла
     }
 
-    getReportsList()
+    watch(
+        listRequestParameters,
+        () => {
+            getReportsList()
+        },
+        {deep: true}
+    )
     return {
         reportItems,
         listRequestParameters,
         setSortRequestParameters,
         getReportFile,
+        setSearchRequestParameter,
+        getReportsList,
     }
 })

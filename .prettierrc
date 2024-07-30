@@ -6,5 +6,6 @@
     "bracketSameLine": false,
     "singleAttributePerLine": true,
     "endOfLine": "auto",
-    "jsxBracketSameLine": false
+    "jsxBracketSameLine": false,
+    "printWidth": 100
 }

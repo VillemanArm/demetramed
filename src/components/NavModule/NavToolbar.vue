@@ -1,21 +1,22 @@
 <template>
     <div class="toolbar">
         <q-input
-            v-model="NavStore.searchQuery"
+            v-model="navStore.searchQuery"
             outlined
             placeholder="Поиск"
             clear-icon="close"
             class="toolbar__search"
             color="accent"
+            @keyup.enter="handleSearch"
         >
             <template v-slot:prepend>
                 <SearchIcon style="width: 20rem; height: 20rem" />
             </template>
             <template v-slot:append>
                 <q-icon
-                    v-if="NavStore.searchQuery"
+                    v-if="navStore.searchQuery"
                     name="close"
-                    @click="NavStore.searchQuery = ''"
+                    @click="navStore.searchQuery = ''"
                     class="cursor-pointer"
                     size="20rem"
                 />
@@ -26,18 +27,18 @@
                 :class="{
                     toolbar__option: true,
                     'toolbar__option--active':
-                        NavStore.modulesInViewer['ResearchList'],
+                        navStore.modulesInViewer['ResearchList'],
                 }"
-                @click="NavStore.setModuleInViewer('ResearchList')"
+                @click="navStore.setModuleInViewer('ResearchList')"
                 >Исследования</span
             >
             <span
                 :class="{
                     toolbar__option: true,
                     'toolbar__option--active':
-                        NavStore.modulesInViewer['ReportsList'],
+                        navStore.modulesInViewer['ReportsList'],
                 }"
-                @click="NavStore.setModuleInViewer('ReportsList')"
+                @click="navStore.setModuleInViewer('ReportsList')"
                 >Отчеты</span
             >
         </div>
@@ -48,12 +49,21 @@
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import SearchIcon from 'assets/icons/search-icon.vue'
 import {useNavStore} from 'stores/NavStore'
+import {useResearchStore} from 'src/stores/ResearchStore'
+import {useReportsStore} from 'src/stores/ReportsStore'
 
 //defineProps<{
 //	msg: string;
 //}>();
 
-const NavStore = useNavStore()
+const navStore = useNavStore()
+const researchStore = useResearchStore()
+const reportsStore = useReportsStore()
+
+const handleSearch = () => {
+    researchStore.setSearchRequestParameter(navStore.searchQuery)
+    reportsStore.setSearchRequestParameter(navStore.searchQuery)
+}
 </script>
 
 <style scoped lang="sass">

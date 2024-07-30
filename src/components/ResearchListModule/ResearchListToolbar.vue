@@ -8,126 +8,39 @@
             <AddBigIcon />
         </BaseButton>
         <div class="toolbar__filter">
-            <div
-                :class="{
-                    'toolbar__filter-option': true,
-                    'toolbar__filter-option--active':
-                        researchStore.listRequestParameters.sortOption ===
-                        'date',
-                }"
-            >
-                <span>По дате</span>
-                <div class="toolbar__sort-direction">
-                    <NextIcon
-                        @click="
-                            researchStore.setSortRequestParameters(
-                                'date',
-                                false
-                            )
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                researchStore.listRequestParameters
-                                    .sortOption === 'date' &&
-                                researchStore.listRequestParameters
-                                    .sortDescending === false,
-                        }"
-                    />
-                    <NextIcon
-                        @click="
-                            researchStore.setSortRequestParameters('date', true)
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                researchStore.listRequestParameters
-                                    .sortOption === 'date' &&
-                                researchStore.listRequestParameters
-                                    .sortDescending === true,
-                        }"
-                    />
-                </div>
-            </div>
-            <div
-                :class="{
-                    'toolbar__filter-option': true,
-                    'toolbar__filter-option--active':
-                        researchStore.listRequestParameters.sortOption ===
-                        'name',
-                }"
-            >
-                <span>По пациенту</span>
-                <div class="toolbar__sort-direction">
-                    <NextIcon
-                        @click="
-                            researchStore.setSortRequestParameters(
-                                'name',
-                                false
-                            )
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                researchStore.listRequestParameters
-                                    .sortOption === 'name' &&
-                                researchStore.listRequestParameters
-                                    .sortDescending === false,
-                        }"
-                    />
-                    <NextIcon
-                        @click="
-                            researchStore.setSortRequestParameters('name', true)
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                researchStore.listRequestParameters
-                                    .sortOption === 'name' &&
-                                researchStore.listRequestParameters
-                                    .sortDescending === true,
-                        }"
-                    />
-                </div>
-            </div>
-            <div
-                :class="{
-                    'toolbar__filter-option': true,
-                    'toolbar__filter-option--active':
-                        researchStore.listRequestParameters.sortOption ===
-                        'number',
-                }"
-            >
-                <span>По номеру исследования</span>
-                <div class="toolbar__sort-direction">
-                    <NextIcon
-                        @click="
-                            researchStore.setSortRequestParameters(
-                                'number',
-                                false
-                            )
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                researchStore.listRequestParameters
-                                    .sortOption === 'number' &&
-                                researchStore.listRequestParameters
-                                    .sortDescending === false,
-                        }"
-                    />
-                    <NextIcon
-                        @click="
-                            researchStore.setSortRequestParameters(
-                                'number',
-                                true
-                            )
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                researchStore.listRequestParameters
-                                    .sortOption === 'number' &&
-                                researchStore.listRequestParameters
-                                    .sortDescending === true,
-                        }"
-                    />
-                </div>
-            </div>
+            <FilterOption
+                label="По дате"
+                :optionActive="researchStore.listRequestParameters.sortOption === 'date'"
+                :sortDirectionActive="researchStore.listRequestParameters.sortDescending"
+                class="toolbar__filter-option"
+                @setDescending="
+                    (direction) => {
+                        researchStore.setSortRequestParameters('date', direction)
+                    }
+                "
+            />
+            <FilterOption
+                label="По пациенту"
+                :optionActive="researchStore.listRequestParameters.sortOption === 'name'"
+                :sortDirectionActive="researchStore.listRequestParameters.sortDescending"
+                class="toolbar__filter-option"
+                @setDescending="
+                    (direction) => {
+                        researchStore.setSortRequestParameters('name', direction)
+                    }
+                "
+            />
+            <FilterOption
+                label="По номеру исследования"
+                :optionActive="researchStore.listRequestParameters.sortOption === 'number'"
+                :sortDirectionActive="researchStore.listRequestParameters.sortDescending"
+                class="toolbar__filter-option"
+                @setDescending="
+                    (direction) => {
+                        researchStore.setSortRequestParameters('number', direction)
+                    }
+                "
+            />
         </div>
     </div>
 </template>
@@ -138,6 +51,7 @@ import AddBigIcon from 'assets/icons/add-big-icon.vue'
 import NextIcon from 'assets/icons/next-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import {useResearchStore} from 'stores/ResearchStore'
+import FilterOption from 'src/ui/FilterOption.vue'
 
 //defineProps<{
 //	msg: string;

@@ -8,122 +8,54 @@
             <ReportIcon />
         </BaseButton>
         <div class="toolbar__filter">
-            <div
-                :class="{
-                    'toolbar__filter-option': true,
-                    'toolbar__filter-option--active':
-                        reportsStore.listRequestParameters.sortOption ===
-                        'date',
-                }"
-            >
-                <span>По дате</span>
-                <div class="toolbar__sort-direction">
-                    <NextIcon
-                        @click="
-                            reportsStore.setSortRequestParameters('date', false)
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                reportsStore.listRequestParameters
-                                    .sortOption === 'date' &&
-                                reportsStore.listRequestParameters
-                                    .sortDescending === false,
-                        }"
-                    />
-                    <NextIcon
-                        @click="
-                            reportsStore.setSortRequestParameters('date', true)
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                reportsStore.listRequestParameters
-                                    .sortOption === 'date' &&
-                                reportsStore.listRequestParameters
-                                    .sortDescending === true,
-                        }"
-                    />
-                </div>
-            </div>
-            <div
+            <FilterOption
+                label="По дате"
+                :optionActive="
+                    reportsStore.listRequestParameters.sortOption === 'date'
+                "
+                :sortDirectionActive="
+                    reportsStore.listRequestParameters.sortDescending
+                "
+                class="toolbar__filter-option"
+                @setDescending="
+                    (direction) => {
+                        reportsStore.setSortRequestParameters('date', direction)
+                    }
+                "
+            />
+            <FilterOption
                 label="По пациенту"
-                :class="{
-                    'toolbar__filter-option': true,
-                    'toolbar__filter-option--active':
-                        reportsStore.listRequestParameters.sortOption ===
-                        'name',
-                }"
-            >
-                <span>По пациенту</span>
-                <div class="toolbar__sort-direction">
-                    <NextIcon
-                        @click="
-                            reportsStore.setSortRequestParameters('name', false)
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                reportsStore.listRequestParameters
-                                    .sortOption === 'name' &&
-                                reportsStore.listRequestParameters
-                                    .sortDescending === false,
-                        }"
-                    />
-                    <NextIcon
-                        @click="
-                            reportsStore.setSortRequestParameters('name', true)
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                reportsStore.listRequestParameters
-                                    .sortOption === 'name' &&
-                                reportsStore.listRequestParameters
-                                    .sortDescending === true,
-                        }"
-                    />
-                </div>
-            </div>
-            <div
+                :optionActive="
+                    reportsStore.listRequestParameters.sortOption === 'name'
+                "
+                :sortDirectionActive="
+                    reportsStore.listRequestParameters.sortDescending
+                "
+                class="toolbar__filter-option"
+                @setDescending="
+                    (direction) => {
+                        reportsStore.setSortRequestParameters('name', direction)
+                    }
+                "
+            />
+            <FilterOption
                 label="По номеру исследования"
-                :class="{
-                    'toolbar__filter-option': true,
-                    'toolbar__filter-option--active':
-                        reportsStore.listRequestParameters.sortOption ===
-                        'number',
-                }"
-            >
-                <span>По номеру исследования</span>
-                <div class="toolbar__sort-direction">
-                    <NextIcon
-                        @click="
-                            reportsStore.setSortRequestParameters(
-                                'number',
-                                false
-                            )
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                reportsStore.listRequestParameters
-                                    .sortOption === 'number' &&
-                                reportsStore.listRequestParameters
-                                    .sortDescending === false,
-                        }"
-                    />
-                    <NextIcon
-                        @click="
-                            reportsStore.setSortRequestParameters(
-                                'number',
-                                true
-                            )
-                        "
-                        :class="{
-                            'toolbar__sort-direction--active':
-                                reportsStore.listRequestParameters
-                                    .sortOption === 'number' &&
-                                reportsStore.listRequestParameters
-                                    .sortDescending === true,
-                        }"
-                    />
-                </div>
-            </div>
+                :optionActive="
+                    reportsStore.listRequestParameters.sortOption === 'number'
+                "
+                :sortDirectionActive="
+                    reportsStore.listRequestParameters.sortDescending
+                "
+                class="toolbar__filter-option"
+                @setDescending="
+                    (direction) => {
+                        reportsStore.setSortRequestParameters(
+                            'number',
+                            direction
+                        )
+                    }
+                "
+            />
         </div>
     </div>
 </template>
@@ -131,9 +63,9 @@
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import ReportIcon from 'assets/icons/report-icon.vue'
-import NextIcon from 'assets/icons/next-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import {useReportsStore} from 'stores/ReportsStore'
+import FilterOption from 'src/ui/FilterOption.vue'
 
 //defineProps<{
 //	msg: string;
@@ -171,17 +103,6 @@ const reportsStore = useReportsStore()
   display: flex
 
 .toolbar__filter-option
-  height: 52rem
-  display: flex
-  padding: 0 34rem
-  gap: 16rem
-  align-items: center
-
-  background-color: transparent
-  color: $non-active-color
-  border: 2rem solid $non-active-color
-  border-radius: 0
-
 
   &:first-child
     border-top-left-radius: 8rem
@@ -190,32 +111,4 @@ const reportsStore = useReportsStore()
   &:last-child
     border-top-right-radius: 8rem
     border-bottom-right-radius: 8rem
-
-  &:hover
-    border-color: $active-color
-    color: $active-color
-
-  &--active
-    border-color: $active-color
-    color: $active-color
-
-.toolbar__sort-direction
-  display: grid
-
-  & svg
-    width: 18rem
-    height: 18rem
-
-    cursor: pointer
-
-    &:hover
-      fill: $active-color
-
-    &:first-child
-      transform: rotate(-90deg)
-
-    &:last-child
-      transform: rotate(90deg)
-  &--active
-    fill: $active-color
 </style>

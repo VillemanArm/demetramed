@@ -56,10 +56,10 @@ export default class ResearchApi {
         return data
     }
 
-    startAnalysis = (id: string) => {
+    startAnalysis = (researchId: string) => {
         axios
-            .post(`${this.baseURL}/research`, {
-                id: id,
+            .post(`${this.baseURL}/analysis`, {
+                id: researchId,
             })
             .catch((error) => {
                 console.log(error)

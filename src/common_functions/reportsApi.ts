@@ -19,10 +19,10 @@ export default class ReportsApi {
         return data
     }
 
-    getReportFile = (id: string) => {
+    getReportFile = (reportId: string) => {
         axios
             .post(`${this.baseURL}/report-file`, {
-                id: id,
+                id: reportId,
             })
             .catch((error) => {
                 console.log(error)
