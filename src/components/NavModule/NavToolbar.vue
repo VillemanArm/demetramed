@@ -3,31 +3,23 @@
         <q-input
             v-model="navStore.searchQuery"
             outlined
+            clearable
             placeholder="Поиск"
             clear-icon="close"
             class="toolbar__search"
             color="accent"
             @keyup.enter="handleSearch"
+            @clear="handleSearchClear"
         >
             <template v-slot:prepend>
                 <SearchIcon style="width: 20rem; height: 20rem" />
-            </template>
-            <template v-slot:append>
-                <q-icon
-                    v-if="navStore.searchQuery"
-                    name="close"
-                    @click="navStore.searchQuery = ''"
-                    class="cursor-pointer"
-                    size="20rem"
-                />
             </template>
         </q-input>
         <div class="toolbar__nav">
             <span
                 :class="{
                     toolbar__option: true,
-                    'toolbar__option--active':
-                        navStore.modulesInViewer['ResearchList'],
+                    'toolbar__option--active': navStore.modulesInViewer['ResearchList'],
                 }"
                 @click="navStore.setModuleInViewer('ResearchList')"
                 >Исследования</span
@@ -35,8 +27,7 @@
             <span
                 :class="{
                     toolbar__option: true,
-                    'toolbar__option--active':
-                        navStore.modulesInViewer['ReportsList'],
+                    'toolbar__option--active': navStore.modulesInViewer['ReportsList'],
                 }"
                 @click="navStore.setModuleInViewer('ReportsList')"
                 >Отчеты</span
@@ -61,6 +52,11 @@ const researchStore = useResearchStore()
 const reportsStore = useReportsStore()
 
 const handleSearch = () => {
+    researchStore.setSearchRequestParameter(navStore.searchQuery)
+    reportsStore.setSearchRequestParameter(navStore.searchQuery)
+}
+
+const handleSearchClear = () => {
     researchStore.setSearchRequestParameter(navStore.searchQuery)
     reportsStore.setSearchRequestParameter(navStore.searchQuery)
 }

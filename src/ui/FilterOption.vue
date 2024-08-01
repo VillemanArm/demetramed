@@ -1,3 +1,14 @@
+<!--
+  Компонент представляет из себя универсальную кнопку для установки фильтра
+  Принимает параметры:
+    label: string
+    optionActive: boolean
+    sortDirectionActive: boolean
+
+  Возвращает события:
+    setDescending(value: boolean) - установка сортировки с указанием по направлению убывания или нет
+ -->
+
 <template>
     <div
         :class="{
@@ -10,15 +21,13 @@
             <NextIcon
                 @click="$emit('setDescending', false)"
                 :class="{
-                    'sort-direction--active':
-                        optionActive && !sortDirectionActive,
+                    'sort-direction--active': optionActive && !sortDirectionActive,
                 }"
             />
             <NextIcon
                 @click="$emit('setDescending', true)"
                 :class="{
-                    'sort-direction--active':
-                        optionActive && sortDirectionActive,
+                    'sort-direction--active': optionActive && sortDirectionActive,
                 }"
             />
         </div>
@@ -28,7 +37,6 @@
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import NextIcon from 'assets/icons/next-icon.vue'
-//import {useRoute} from 'vue-router'
 
 defineProps<{
     label: string
