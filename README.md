@@ -42,4 +42,4 @@ quasar build
 
 Для отладки приложения нужно обойти CORS политику браузера с помощью расширения для chrome [Сross Domain - CORS](https://chromewebstore.google.com/detail/mjhpgnbimicffchbodmgfnemoghjakai)
 
-При смене домена сервера нужно изменить переменную baseURL в файлах src/common_functions/reportsApi.ts и src/common_functions/researchApi.ts
+При смене домена сервера нужно изменить переменную baseURL в файлах src/common_functions/reportsApi.ts и src/common_functions/researchApi.ts и значение publicPath в файле quasar.config.js.
