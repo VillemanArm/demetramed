@@ -159,10 +159,7 @@ export const useReportsStore = defineStore('reports', () => {
         perPage: 7,
     })
 
-    const setSortRequestParameters = (
-        sortOption: ReportsSortOptions,
-        sortDescending: boolean
-    ) => {
+    const setSortRequestParameters = (sortOption: ReportsSortOptions, sortDescending: boolean) => {
         listRequestParameters.value.sortOption = sortOption
         listRequestParameters.value.sortDescending = sortDescending
     }
@@ -191,6 +188,13 @@ export const useReportsStore = defineStore('reports', () => {
         },
         {deep: true}
     )
+
+    const selectedReportPage = ref<string>('')
+
+    const setSelectedReportPage = (pageURL: string) => {
+        selectedReportPage.value = pageURL
+    }
+
     return {
         reportItems,
         listRequestParameters,
@@ -198,5 +202,6 @@ export const useReportsStore = defineStore('reports', () => {
         getReportFile,
         setSearchRequestParameter,
         getReportsList,
+        setSelectedReportPage,
     }
 })

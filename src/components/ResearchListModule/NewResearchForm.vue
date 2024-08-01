@@ -7,10 +7,7 @@
             <CloseIcon />
         </div>
         <span class="form__date">{{
-            researchStore.newResearchData.researchDate
-                .split('-')
-                .reverse()
-                .join('/')
+            researchStore.newResearchData.researchDate.split('-').reverse().join('/')
         }}</span>
         <form
             class="form__fields"
@@ -125,24 +122,29 @@ const handleCloseClick = () => {
     researchStore.isNewResearchForm = false
     researchStore.resetNewResearchData()
     researchStore.getResearchList()
+    newResearchForm.value.reset()
 }
 
 const handleSaveAndCloseClick = async () => {
     researchStore.isNewResearchForm = false
+
     const newResearchData: FormData = new FormData(newResearchForm.value)
     await researchStore.addNewResearch(newResearchData)
     researchStore.resetNewResearchData()
     researchStore.getResearchList()
+    newResearchForm.value.reset()
 }
 
 const handleSaveAndStayClick = () => {
     const newResearchData = new FormData(newResearchForm.value)
     researchStore.addNewResearch(newResearchData)
     researchStore.resetNewResearchData()
+    newResearchForm.value.reset()
 }
 
 const handleResetClick = () => {
     researchStore.resetNewResearchData()
+    newResearchForm.value.reset()
 }
 </script>
 
