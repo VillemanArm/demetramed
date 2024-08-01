@@ -1,26 +1,21 @@
 <template>
     <iframe
         class="report"
-        src="https://insight-webstudio.ru/files_for_another_projects/demetramed_pages/report-page.html"
+        :src="reportsStore.selectedReportPage"
     ></iframe>
 </template>
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-// import {useRoute} from 'vue-router'
+import {useReportsStore} from 'src/stores/ReportsStore'
 
-//defineProps<{
-//	msg: string;
-//}>();
-
-// const route = useRoute()
-// const researchStore = useResearchStore()
+const reportsStore = useReportsStore()
 </script>
 
 <style scoped lang="sass">
 .report
   width: 100%
-  height: 970rem
+  min-height: 980rem
 
   border: none
   overflow: hidden

@@ -2,6 +2,7 @@
     <RouterLink
         :to="`report/:${reportItem.id}`"
         class="item"
+        @click="handleItemClick"
     >
         <span>{{ reportItem.reportDate }}</span>
         <span>Исследование №{{ reportItem.reportNumber }}</span>
@@ -12,12 +13,17 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
+import {useReportsStore} from 'stores/ReportsStore'
 
-// import type {ResearchItem} from 'stores/ResearchStore'
-
-defineProps<{
+const props = defineProps<{
     reportItem: ReportItem
 }>()
+
+const reportsStore = useReportsStore()
+
+const handleItemClick = () => {
+    reportsStore.setSelectedReportPage(props.reportItem.link)
+}
 </script>
 
 <style scoped lang="sass">

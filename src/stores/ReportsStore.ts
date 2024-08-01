@@ -10,6 +10,7 @@ declare global {
         patientName: string
         atypicalObjectsAmount: number
         complete: boolean
+        link: string
     }
 
     interface ReportsListRequestParameters {
@@ -203,5 +204,6 @@ export const useReportsStore = defineStore('reports', () => {
         setSearchRequestParameter,
         getReportsList,
         setSelectedReportPage,
+        selectedReportPage,
     }
 })
