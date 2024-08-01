@@ -126,20 +126,19 @@ const handleCloseClick = () => {
 }
 
 const handleSaveAndCloseClick = async () => {
-    researchStore.isNewResearchForm = false
-
     const newResearchData: FormData = new FormData(newResearchForm.value)
+    newResearchForm.value.reset()
+    researchStore.isNewResearchForm = false
     await researchStore.addNewResearch(newResearchData)
     researchStore.resetNewResearchData()
     researchStore.getResearchList()
-    newResearchForm.value.reset()
 }
 
 const handleSaveAndStayClick = () => {
     const newResearchData = new FormData(newResearchForm.value)
+    newResearchForm.value.reset()
     researchStore.addNewResearch(newResearchData)
     researchStore.resetNewResearchData()
-    newResearchForm.value.reset()
 }
 
 const handleResetClick = () => {
