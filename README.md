@@ -19,13 +19,13 @@ npm install
 4. Запустить сервер разработки
 
 ```bash
-quasar dev
+npm run dev
 ```
 
 5. Для сборки запустить команду
 
 ```bash
-quasar build
+npm run build
 ```
 
 ## Особенности проекта
@@ -42,4 +42,10 @@ quasar build
 
 Для отладки приложения нужно обойти CORS политику браузера с помощью расширения для chrome [Сross Domain - CORS](https://chromewebstore.google.com/detail/mjhpgnbimicffchbodmgfnemoghjakai)
 
-При смене домена сервера нужно изменить переменную baseURL в файлах src/common_functions/reportsApi.ts и src/common_functions/researchApi.ts и значение publicPath в файле quasar.config.js.
+## Deploy проекта
+
+Production сборка проекта находится в папке dist/spa/. Она будет работать при расположении на любом домене при условии, что этот домен будет указан в CORS настройках сервера.
+
+При смене домена сервера нужно изменить переменную serverURL в файле dist/spa/config.json
+
+Если spa будет находиться не в корневой директории домена, нужно прописать publicPath в файле quasar.config.js. И пересобрать проект командой 'npm run build'
