@@ -88,5 +88,6 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         '@import': 'off',
         'vue/no-parsing-error': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
     },
 }

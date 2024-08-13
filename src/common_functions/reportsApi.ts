@@ -1,14 +1,15 @@
 import axios from 'axios'
+import appSettings from '/public/settings.json'
 
 export default class ReportsApi {
-    protected baseURL = 'http://51.250.28.160:5005/api'
+    protected serverURL = appSettings.serverURL
 
     getReportsList = async (
         params: ReportsListRequestParameters
     ): Promise<ReportItem[] | undefined> => {
         let data
         await axios
-            .post(`${this.baseURL}/reports`, params)
+            .post(`${this.serverURL}/reports`, params)
             .then(function (response) {
                 data = response.data
             })
@@ -21,7 +22,7 @@ export default class ReportsApi {
 
     getReportFile = (reportId: string) => {
         axios
-            .post(`${this.baseURL}/report-file`, {
+            .post(`${this.serverURL}/report-file`, {
                 id: reportId,
             })
             .catch((error) => {

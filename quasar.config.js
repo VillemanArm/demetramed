@@ -40,13 +40,7 @@ module.exports = configure(function (/* ctx */) {
         // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
         build: {
             target: {
-                browser: [
-                    'es2019',
-                    'edge88',
-                    'firefox78',
-                    'chrome87',
-                    'safari13.1',
-                ],
+                browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
                 node: 'node20',
             },
 
@@ -57,7 +51,7 @@ module.exports = configure(function (/* ctx */) {
 
             // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-            publicPath: 'https://insight-webstudio.ru/works/demetramed/',
+            publicPath: '/',
             // analyze: true,
             // env: {},
             // rawDefine: {}
