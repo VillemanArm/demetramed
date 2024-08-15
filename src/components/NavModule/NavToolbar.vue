@@ -1,15 +1,15 @@
 <template>
     <div class="toolbar">
         <q-input
-            v-model="navStore.searchQuery"
+            v-model="searchQuery"
             outlined
             clearable
             placeholder="Поиск"
             clear-icon="close"
             class="toolbar__search"
             color="accent"
-            @keyup.enter="handleSearch"
-            @clear="handleSearchClear"
+            @keyup.enter="handleSearchUpdate"
+            @clear="handleSearchUpdate"
         >
             <template v-slot:prepend>
                 <SearchIcon class="toolbar__search-icon" />
@@ -39,27 +39,22 @@
 </template>
 
 <script setup lang="ts">
-import {useNavStore} from 'stores/NavStore'
+import {onMounted, ref} from 'vue'
 import {useResearchStore} from 'src/stores/ResearchStore'
 import {useReportsStore} from 'src/stores/ReportsStore'
 import {useRoute, useRouter} from 'vue-router'
-import {onMounted} from 'vue'
 import SearchIcon from 'assets/icons/search-icon.vue'
 
-const navStore = useNavStore()
 const researchStore = useResearchStore()
 const reportsStore = useReportsStore()
 const route = useRoute()
 const router = useRouter()
 
-const handleSearch = () => {
-    researchStore.setSearchRequestParameter(navStore.searchQuery)
-    reportsStore.setSearchRequestParameter(navStore.searchQuery)
-}
+const searchQuery = ref('')
 
-const handleSearchClear = () => {
-    researchStore.setSearchRequestParameter(navStore.searchQuery)
-    reportsStore.setSearchRequestParameter(navStore.searchQuery)
+const handleSearchUpdate = () => {
+    researchStore.setSearchRequestParameter(searchQuery.value)
+    reportsStore.setSearchRequestParameter(searchQuery.value)
 }
 
 onMounted(() => {
