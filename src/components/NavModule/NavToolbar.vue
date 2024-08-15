@@ -12,40 +12,45 @@
             @clear="handleSearchClear"
         >
             <template v-slot:prepend>
-                <SearchIcon style="width: 20rem; height: 20rem" />
+                <SearchIcon class="toolbar__search-icon" />
             </template>
         </q-input>
         <div class="toolbar__nav">
-            <span
+            <router-link
                 :class="{
                     toolbar__option: true,
-                    'toolbar__option--active': navStore.modulesInViewer['ResearchList'],
+                    'toolbar__option--active': route.path === '/research',
                 }"
-                @click="navStore.setModuleInViewer('ResearchList')"
-                >Исследования</span
+                to="/research"
             >
-            <span
+                Исследования
+            </router-link>
+            <router-link
                 :class="{
                     toolbar__option: true,
-                    'toolbar__option--active': navStore.modulesInViewer['ReportsList'],
+                    'toolbar__option--active': route.path === '/reports',
                 }"
-                @click="navStore.setModuleInViewer('ReportsList')"
-                >Отчеты</span
+                to="/reports"
             >
+                Отчеты
+            </router-link>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import SearchIcon from 'assets/icons/search-icon.vue'
 import {useNavStore} from 'stores/NavStore'
 import {useResearchStore} from 'src/stores/ResearchStore'
 import {useReportsStore} from 'src/stores/ReportsStore'
+import {useRoute, useRouter} from 'vue-router'
+import {onMounted} from 'vue'
+import SearchIcon from 'assets/icons/search-icon.vue'
 
 const navStore = useNavStore()
 const researchStore = useResearchStore()
 const reportsStore = useReportsStore()
+const route = useRoute()
+const router = useRouter()
 
 const handleSearch = () => {
     researchStore.setSearchRequestParameter(navStore.searchQuery)
@@ -56,6 +61,12 @@ const handleSearchClear = () => {
     researchStore.setSearchRequestParameter(navStore.searchQuery)
     reportsStore.setSearchRequestParameter(navStore.searchQuery)
 }
+
+onMounted(() => {
+    if (route.path === '/') {
+        router.push('/research')
+    }
+})
 </script>
 
 <style scoped lang="sass">
@@ -77,6 +88,7 @@ const handleSearchClear = () => {
 
 .toolbar__option
   cursor: pointer
+  color: $non-active-color
 
   &:hover
     color: $active-color
@@ -86,6 +98,10 @@ const handleSearchClear = () => {
     color: $active-color
     text-decoration: underline
     cursor: default
+
+.toolbar__search-icon
+  width: 20rem
+  height: 20rem
 
 :deep(.q-field__control)
   height: 52rem

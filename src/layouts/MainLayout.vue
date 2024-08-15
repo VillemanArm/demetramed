@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
 import HeaderModule from 'src/modules/HeaderModule.vue'
 
 defineOptions({
