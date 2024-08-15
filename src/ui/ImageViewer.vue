@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
+import {onMounted} from 'vue'
 import OpenSeadragon from 'openseadragon'
-
-// defineProps<{
-// 	msg: string;
-// }>();
 
 onMounted(() => {
     const viewer = OpenSeadragon({

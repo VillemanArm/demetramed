@@ -19,9 +19,7 @@
         >
             <LeftArrowIcon />
         </div>
-        <span class="pagination__info"
-            >{{ currentPage }} из {{ maxPages }}</span
-        >
+        <span class="pagination__info">{{ currentPage }} из {{ maxPages }}</span>
         <div
             :class="{
                 pagination__btn: true,
@@ -35,7 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import RightArrowIcon from 'assets/icons/right-arrow-icon.vue'
 import LeftArrowIcon from 'assets/icons/left-arrow-icon.vue'
 

@@ -81,18 +81,6 @@ const handleResearchAddClick = () => {
   display: flex
 
 .toolbar__filter-option
-  height: 52rem
-  display: flex
-  padding: 0 34rem
-  gap: 16rem
-  align-items: center
-
-  background-color: transparent
-  color: $non-active-color
-  border: 2rem solid $non-active-color
-  border-radius: 0
-
-
   &:first-child
     border-top-left-radius: 8rem
     border-bottom-left-radius: 8rem
@@ -100,33 +88,4 @@ const handleResearchAddClick = () => {
   &:last-child
     border-top-right-radius: 8rem
     border-bottom-right-radius: 8rem
-
-  &:hover
-    border-color: $active-color
-    color: $active-color
-
-  &--active
-    border-color: $active-color
-    color: $active-color
-
-.toolbar__sort-direction
-  display: grid
-
-  & svg
-    width: 18rem
-    height: 18rem
-
-    cursor: pointer
-
-    &:hover
-      fill: $active-color
-
-    &:first-child
-      transform: rotate(-90deg)
-
-    &:last-child
-      transform: rotate(90deg)
-
-  &--active
-    fill: $active-color
 </style>

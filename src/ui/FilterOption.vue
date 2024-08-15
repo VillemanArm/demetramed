@@ -35,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import NextIcon from 'assets/icons/next-icon.vue'
 
 defineProps<{
@@ -55,8 +54,12 @@ defineProps<{
 
   background-color: transparent
   color: $non-active-color
-  border: 2rem solid $non-active-color
-  border-radius: 0
+  border: 2rem solid
+  border-color: $non-active-color
+
+  &:not(:first-child)
+    margin-left: -2rem
+    border-left-color: transparent
 
   &:hover
     border-color: $active-color
@@ -65,6 +68,9 @@ defineProps<{
   &--active
     border-color: $active-color
     color: $active-color
+
+    &:not(:first-child)
+      border-left-color: $active-color
 
 .sort-direction
   display: grid

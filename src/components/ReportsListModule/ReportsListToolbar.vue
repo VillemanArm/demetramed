@@ -83,7 +83,6 @@ const reportsStore = useReportsStore()
   display: flex
 
 .toolbar__filter-option
-
   &:first-child
     border-top-left-radius: 8rem
     border-bottom-left-radius: 8rem

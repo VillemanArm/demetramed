@@ -7,8 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-
 defineProps<{
     placeholder?: string
 }>()
