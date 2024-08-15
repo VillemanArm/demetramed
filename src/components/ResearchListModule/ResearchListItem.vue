@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import AnalysisIcon from 'assets/icons/analysis-icon.vue'
 import {useResearchStore} from 'src/stores/ResearchStore'

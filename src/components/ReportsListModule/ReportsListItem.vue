@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import {useReportsStore} from 'stores/ReportsStore'
 
 const props = defineProps<{
@@ -51,12 +50,6 @@ const handleItemClick = () => {
     display: inline-block
     align-self: center
     text-align: start
-
-
-    // &:not(:last-child)
-    //   padding-right: 30rem
-
-
 
 a:-webkit-any-link
   color: $primary-font-color

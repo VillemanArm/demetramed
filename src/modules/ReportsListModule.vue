@@ -23,30 +23,19 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import BaseButton from 'src/ui/BaseButton.vue'
+import {ref, computed, onMounted} from 'vue'
 import BasePagination from 'src/ui/BasePagination.vue'
 import ReportsListItem from 'components/ReportsListModule/ReportsListItem.vue'
 import ReportsListToolbar from 'components/ReportsListModule/ReportsListToolbar.vue'
 import {useReportsStore} from 'stores/ReportsStore'
 
-// //defineProps<{
-// //	msg: string;
-// //}>();
-
 const reportsStore = useReportsStore()
 
 const currentPage = ref<number>(1)
 const itemsByPage = ref<number>(7)
-const maxPages = computed(() =>
-    Math.ceil(reportsStore.reportItems.length / itemsByPage.value)
-)
-const displayedItemsFrom = computed(
-    () => (currentPage.value - 1) * itemsByPage.value
-)
-const displayedItemsTo = computed(
-    () => displayedItemsFrom.value + itemsByPage.value
-)
+const maxPages = computed(() => Math.ceil(reportsStore.reportItems.length / itemsByPage.value))
+const displayedItemsFrom = computed(() => (currentPage.value - 1) * itemsByPage.value)
+const displayedItemsTo = computed(() => displayedItemsFrom.value + itemsByPage.value)
 const setCurrentPage = (newValue: number) => {
     currentPage.value = newValue
 }

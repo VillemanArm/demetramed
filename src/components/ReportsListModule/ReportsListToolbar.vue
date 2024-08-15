@@ -10,12 +10,8 @@
         <div class="toolbar__filter">
             <FilterOption
                 label="По дате"
-                :optionActive="
-                    reportsStore.listRequestParameters.sortOption === 'date'
-                "
-                :sortDirectionActive="
-                    reportsStore.listRequestParameters.sortDescending
-                "
+                :optionActive="reportsStore.listRequestParameters.sortOption === 'date'"
+                :sortDirectionActive="reportsStore.listRequestParameters.sortDescending"
                 class="toolbar__filter-option"
                 @setDescending="
                     (direction) => {
@@ -25,12 +21,8 @@
             />
             <FilterOption
                 label="По пациенту"
-                :optionActive="
-                    reportsStore.listRequestParameters.sortOption === 'name'
-                "
-                :sortDirectionActive="
-                    reportsStore.listRequestParameters.sortDescending
-                "
+                :optionActive="reportsStore.listRequestParameters.sortOption === 'name'"
+                :sortDirectionActive="reportsStore.listRequestParameters.sortDescending"
                 class="toolbar__filter-option"
                 @setDescending="
                     (direction) => {
@@ -40,19 +32,12 @@
             />
             <FilterOption
                 label="По номеру исследования"
-                :optionActive="
-                    reportsStore.listRequestParameters.sortOption === 'number'
-                "
-                :sortDirectionActive="
-                    reportsStore.listRequestParameters.sortDescending
-                "
+                :optionActive="reportsStore.listRequestParameters.sortOption === 'number'"
+                :sortDirectionActive="reportsStore.listRequestParameters.sortDescending"
                 class="toolbar__filter-option"
                 @setDescending="
                     (direction) => {
-                        reportsStore.setSortRequestParameters(
-                            'number',
-                            direction
-                        )
+                        reportsStore.setSortRequestParameters('number', direction)
                     }
                 "
             />
@@ -61,15 +46,10 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import ReportIcon from 'assets/icons/report-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import {useReportsStore} from 'stores/ReportsStore'
 import FilterOption from 'src/ui/FilterOption.vue'
-
-//defineProps<{
-//	msg: string;
-//}>();
 
 const reportsStore = useReportsStore()
 </script>

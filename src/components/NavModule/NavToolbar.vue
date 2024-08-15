@@ -43,10 +43,6 @@ import {useNavStore} from 'stores/NavStore'
 import {useResearchStore} from 'src/stores/ResearchStore'
 import {useReportsStore} from 'src/stores/ReportsStore'
 
-//defineProps<{
-//	msg: string;
-//}>();
-
 const navStore = useNavStore()
 const researchStore = useResearchStore()
 const reportsStore = useReportsStore()

@@ -21,6 +21,7 @@ export default class ReportsApi {
     }
 
     getReportFile = (reportId: string) => {
+        // ожидает реализации генерации файла на сервере
         axios
             .post(`${this.serverURL}/report-file`, {
                 id: reportId,

@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
 import ReportModule from 'src/modules/ReportModule.vue'
 </script>
 

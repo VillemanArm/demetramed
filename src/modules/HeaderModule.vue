@@ -16,7 +16,6 @@
                 <SettingsIcon class="header__icon" />
             </router-link>
             <div class="header__user">
-                <!-- получить аватар с сервера -->
                 <img
                     src="~assets/img/user.png"
                     alt=""
@@ -27,7 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
 import FaqIcon from 'assets/icons/faq-icon.vue'
 import SettingsIcon from 'assets/icons/settings-icon.vue'
 

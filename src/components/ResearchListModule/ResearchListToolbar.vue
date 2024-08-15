@@ -46,16 +46,10 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import AddBigIcon from 'assets/icons/add-big-icon.vue'
-import NextIcon from 'assets/icons/next-icon.vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import {useResearchStore} from 'stores/ResearchStore'
 import FilterOption from 'src/ui/FilterOption.vue'
-
-//defineProps<{
-//	msg: string;
-//}>();
 
 const researchStore = useResearchStore()
 

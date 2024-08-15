@@ -9,16 +9,11 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import NavToolbar from 'components/NavModule/NavToolbar.vue'
 import ResearchListModule from 'src/modules/ResearchListModule.vue'
 import ReportsListModule from 'src/modules/ReportsListModule.vue'
 
 import {useNavStore} from 'stores/NavStore'
-
-//defineProps<{
-//	msg: string;
-//}>();
 
 const NavStore = useNavStore()
 </script>
@@ -27,4 +22,3 @@ const NavStore = useNavStore()
 .nav
   display: flex
 </style>
-src/stores/NavStore

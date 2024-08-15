@@ -108,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
+import {ref} from 'vue'
 import BaseButton from 'src/ui/BaseButton.vue'
 import SuccessIcon from 'assets/icons/success-icon.vue'
 import {useResearchStore} from 'stores/ResearchStore'
