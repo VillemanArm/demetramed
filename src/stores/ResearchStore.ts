@@ -57,7 +57,7 @@ export const useResearchStore = defineStore('research', () => {
     const getResearchList = () => {
         researchItems.value = []
         researchApi.getResearchList(listRequestParameters.value).then((data) => {
-            if (data) {
+            if (data?.length) {
                 researchItems.value.push(...data)
             }
         })

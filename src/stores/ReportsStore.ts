@@ -49,7 +49,7 @@ export const useReportsStore = defineStore('reports', () => {
     const getReportsList = () => {
         reportItems.value = []
         reportsApi.getReportsList(listRequestParameters.value).then((data) => {
-            if (data) {
+            if (data?.length) {
                 reportItems.value.push(...data)
             }
         })
