@@ -1,50 +1,52 @@
-import axios from 'axios'
-
 export default class ResearchApi {
     getNewResearchData = async (): Promise<NewResearchServerData | undefined> => {
-        let data
-        await axios
-            .post('/api/new-research-data')
-            .then(function (response) {
-                data = response.data
-            })
+        const response = await fetch('/api/new-research-data', {
+            method: 'POST',
+        })
+            .then((response) => response.json())
             .catch((error) => {
                 console.log(error)
             })
 
-        return data
+        return response
     }
 
     addNewResearch = async (newResearch: FormData) => {
         fetch('/api/new-research-add', {
             method: 'POST',
             body: newResearch,
-        }).catch((error) => console.error('Error:', error))
+        }).catch((error) => console.error(error))
     }
 
     getResearchList = async (
         params: ResearchListRequestParameters
     ): Promise<ResearchItem[] | undefined> => {
-        let data
-        await axios
-            .post('/api/research', params)
-            .then(function (response) {
-                data = response.data
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-
-        return data
-    }
-
-    startAnalysis = (researchId: string) => {
-        axios
-            .post('/api/analysis', {
-                id: researchId,
-            })
+        const response = await fetch('/api/research', {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
             .catch((error) => {
                 console.log(error)
             })
+
+        return response
+    }
+
+    startAnalysis = (researchId: string) => {
+        fetch('/api/analysis', {
+            method: 'POST',
+            body: JSON.stringify({
+                id: researchId,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 }
