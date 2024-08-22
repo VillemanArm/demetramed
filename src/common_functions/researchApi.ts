@@ -3,11 +3,12 @@ import appSettings from '/public/settings.json'
 
 export default class ResearchApi {
     protected serverURL = appSettings.serverURL
+    // protected serverURL = '/api'
 
     getNewResearchData = async (): Promise<NewResearchServerData | undefined> => {
         let data
         await axios
-            .post(`${this.serverURL}/new-research-data`)
+            .post('/api/new-research-data')
             .then(function (response) {
                 data = response.data
             })
@@ -19,7 +20,7 @@ export default class ResearchApi {
     }
 
     addNewResearch = async (newResearch: FormData) => {
-        fetch(`${this.serverURL}/new-research-add`, {
+        fetch('/api/new-research-add', {
             method: 'POST',
             body: newResearch,
         }).catch((error) => console.error('Error:', error))
@@ -30,7 +31,7 @@ export default class ResearchApi {
     ): Promise<ResearchItem[] | undefined> => {
         let data
         await axios
-            .post(`${this.serverURL}/research`, params)
+            .post('/api/research', params)
             .then(function (response) {
                 data = response.data
             })
@@ -43,7 +44,7 @@ export default class ResearchApi {
 
     startAnalysis = (researchId: string) => {
         axios
-            .post(`${this.serverURL}/analysis`, {
+            .post('/api/analysis', {
                 id: researchId,
             })
             .catch((error) => {

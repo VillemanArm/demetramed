@@ -9,7 +9,7 @@ export default class ReportsApi {
     ): Promise<ReportItem[] | undefined> => {
         let data
         await axios
-            .post(`${this.serverURL}/reports`, params)
+            .post('/api/reports', params)
             .then(function (response) {
                 data = response.data
             })
@@ -23,7 +23,7 @@ export default class ReportsApi {
     getReportFile = (reportId: string) => {
         // ожидает реализации генерации файла на сервере
         axios
-            .post(`${this.serverURL}/report-file`, {
+            .post('/api/report-file', {
                 id: reportId,
             })
             .catch((error) => {
