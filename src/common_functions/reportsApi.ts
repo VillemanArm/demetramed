@@ -1,9 +1,6 @@
 import axios from 'axios'
-import appSettings from '/public/settings.json'
 
 export default class ReportsApi {
-    protected serverURL = appSettings.serverURL
-
     getReportsList = async (
         params: ReportsListRequestParameters
     ): Promise<ReportItem[] | undefined> => {

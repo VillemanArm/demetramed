@@ -9,6 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const {configure} = require('quasar/wrappers')
+const appSettings = require('./public/settings')
 
 module.exports = configure(function (/* ctx */) {
     return {
@@ -51,7 +52,7 @@ module.exports = configure(function (/* ctx */) {
 
             // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-            publicPath: '/',
+            publicPath: appSettings.publicPath,
             // analyze: true,
             // env: {},
             // rawDefine: {}
@@ -85,7 +86,7 @@ module.exports = configure(function (/* ctx */) {
             open: false, // opens browser window automatically
             proxy: {
                 '/api': {
-                    target: 'http://51.250.28.160:5005',
+                    target: appSettings.serverURL, //'http://51.250.28.160:5005', //
                     changeOrigin: true,
                     secure: false,
                     //rewrite: (path) => path.replace(/^\/api/, ''),

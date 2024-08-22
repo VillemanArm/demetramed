@@ -1,10 +1,6 @@
 import axios from 'axios'
-import appSettings from '/public/settings.json'
 
 export default class ResearchApi {
-    protected serverURL = appSettings.serverURL
-    // protected serverURL = '/api'
-
     getNewResearchData = async (): Promise<NewResearchServerData | undefined> => {
         let data
         await axios
