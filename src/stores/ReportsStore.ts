@@ -1,28 +1,7 @@
 import {ref, watch} from 'vue'
 import {defineStore} from 'pinia'
 import ReportsApi from 'src/common_functions/reportsApi'
-
-declare global {
-    interface ReportItem {
-        id: string
-        reportNumber: string
-        reportDate: string
-        patientName: string
-        atypicalObjectsAmount: number
-        complete: boolean
-        link: string
-    }
-
-    interface ReportsListRequestParameters {
-        searchQuery: string
-        sortOption: ReportsSortOptions
-        sortDescending: boolean
-        page: number
-        perPage: number
-    }
-}
-
-type ReportsSortOptions = 'date' | 'name' | 'number' | ''
+import {ReportItem, ReportsListRequestParameters, ReportsSortOptions} from 'src/types/reports.dto'
 
 const reportsApi = new ReportsApi()
 

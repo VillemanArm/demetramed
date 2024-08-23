@@ -1,3 +1,5 @@
+import {ReportItem, ReportsListRequestParameters} from 'src/types/reports.dto'
+
 export default class ReportsApi {
     getReportsList = async (
         params: ReportsListRequestParameters

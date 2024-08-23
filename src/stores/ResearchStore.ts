@@ -1,36 +1,13 @@
 import {ref, computed, watch} from 'vue'
 import {defineStore} from 'pinia'
 import ResearchApi from 'src/common_functions/researchApi'
-
-declare global {
-    interface ResearchItem {
-        id: string
-        researchNumber: string
-        researchDate: string
-        patientName: string
-    }
-
-    interface ResearchListRequestParameters {
-        searchQuery: string
-        sortOption: ResearchSortOptions
-        sortDescending: boolean
-        page: number
-        perPage: number
-    }
-
-    interface NewResearchData {
-        id: string
-        researchDate: string
-        institutionsByReferral: string[]
-    }
-
-    interface NewResearchServerData {
-        id: string
-        institutionByReferral: string[]
-    }
-}
-
-type ResearchSortOptions = 'date' | 'name' | 'number' | ''
+import {
+    NewResearchData,
+    NewResearchServerData,
+    ResearchItem,
+    ResearchListRequestParameters,
+    ResearchSortOptions,
+} from 'src/types/research.dto'
 
 const researchApi = new ResearchApi()
 

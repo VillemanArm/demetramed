@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import {ReportItem} from 'src/types/reports.dto'
 import {useReportsStore} from 'stores/ReportsStore'
 
 const props = defineProps<{

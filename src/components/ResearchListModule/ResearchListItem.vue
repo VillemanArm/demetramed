@@ -17,6 +17,7 @@
 import BaseButton from 'src/ui/BaseButton.vue'
 import AnalysisIcon from 'assets/icons/analysis-icon.vue'
 import {useResearchStore} from 'src/stores/ResearchStore'
+import {ResearchItem} from 'src/types/research.dto'
 
 const props = defineProps<{
     researchItem: ResearchItem

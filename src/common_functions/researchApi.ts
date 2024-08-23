@@ -1,3 +1,9 @@
+import {
+    NewResearchServerData,
+    ResearchItem,
+    ResearchListRequestParameters,
+} from 'src/types/research.dto'
+
 export default class ResearchApi {
     getNewResearchData = async (): Promise<NewResearchServerData | undefined> => {
         const response = await fetch('/api/new-research-data', {
