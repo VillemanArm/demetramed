@@ -5,10 +5,10 @@ import OpenSeadragon from 'openseadragon'
 onMounted(() => {
     const viewer = OpenSeadragon({
         id: 'openseadragon1',
-        prefixUrl: '/img/openseadragon_images/',
+        prefixUrl: '~assets/img/openseadragon_images/',
         tileSources: {
             type: 'image',
-            url: '/img/test_img.jpg',
+            url: '~assets/img/test_img.jpg',
             // buildPyramid: false,
         },
     })

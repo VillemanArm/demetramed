@@ -89,7 +89,7 @@ module.exports = configure(function (/* ctx */) {
                     target: appSettings.serverURL, //'http://51.250.28.160:5005', //
                     changeOrigin: true,
                     secure: false,
-                    //rewrite: (path) => path.replace(/^\/api/, ''),
+                    rewrite: (path) => path.replace(/^\/api/, `${appSettings.serverURL}/api`),
                 },
             },
         },
