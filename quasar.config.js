@@ -9,7 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const {configure} = require('quasar/wrappers')
-const appSettings = require('./public/settings')
+require('dotenv').config()
 
 module.exports = configure(function (/* ctx */) {
     return {
@@ -52,9 +52,12 @@ module.exports = configure(function (/* ctx */) {
 
             // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-            publicPath: appSettings.publicPath,
+            publicPath: '/',
             // analyze: true,
-            // env: {},
+            // env: {
+            //     SERVER_URL: process.env.VITE_SERVER_URL,
+            //     PUBLIC_PATH: process.env.VITE_PUBLIC_PATH,
+            // },
             // rawDefine: {}
             ignorePublicFolder: false,
             // minify: false,
@@ -86,10 +89,10 @@ module.exports = configure(function (/* ctx */) {
             open: false, // opens browser window automatically
             proxy: {
                 '/api': {
-                    target: appSettings.serverURL, //'http://51.250.28.160:5005', //
+                    target: process.env.VITE_SERVER_URL,
                     changeOrigin: true,
                     secure: false,
-                    rewrite: (path) => path.replace(/^\/api/, `${appSettings.serverURL}/api`),
+                    //rewrite: (path) => path.replace('http://51.250.28.160:5005/api', '/api'),
                 },
             },
         },

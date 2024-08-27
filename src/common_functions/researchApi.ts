@@ -4,9 +4,11 @@ import {
     ResearchListRequestParameters,
 } from 'src/types/research.dto'
 
+const serverURL = import.meta.env.PROD ? import.meta.env.VITE_SERVER_URL : ''
+
 export default class ResearchApi {
     getNewResearchData = async (): Promise<NewResearchServerData | undefined> => {
-        const response = await fetch('/api/new-research-data', {
+        const response = await fetch(`${serverURL}/api/new-research-data`, {
             method: 'POST',
         })
             .then((response) => response.json())
@@ -18,7 +20,7 @@ export default class ResearchApi {
     }
 
     addNewResearch = async (newResearch: FormData) => {
-        fetch('/api/new-research-add', {
+        fetch(`${serverURL}/api/new-research-add`, {
             method: 'POST',
             body: newResearch,
         }).catch((error) => console.error(error))
@@ -27,7 +29,7 @@ export default class ResearchApi {
     getResearchList = async (
         params: ResearchListRequestParameters
     ): Promise<ResearchItem[] | undefined> => {
-        const response = await fetch('/api/research', {
+        const response = await fetch(`${serverURL}/api/research`, {
             method: 'POST',
             body: JSON.stringify(params),
             headers: {
@@ -43,7 +45,7 @@ export default class ResearchApi {
     }
 
     startAnalysis = (researchId: string) => {
-        fetch('/api/analysis', {
+        fetch(`${serverURL}/api/analysis`, {
             method: 'POST',
             body: JSON.stringify({
                 id: researchId,
